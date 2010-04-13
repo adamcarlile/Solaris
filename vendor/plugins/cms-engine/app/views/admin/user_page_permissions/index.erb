@@ -1,0 +1,27 @@
+<p>
+  <%= link_to_with_icon 'add', 'Add permissions for a new user', new_admin_page_user_page_permission_path(@page) %> &nbsp; 
+</p>
+
+<% if collection.empty?  %>
+  <p>No user permissions defined for this page</p>
+<% else %>
+  <table class="index permissions">
+    <tr>
+      <th>User</th>
+      <th>Can edit content?</th>
+      <th>Can publish content?</th>
+      <th>&nbsp;</th>
+    </tr>
+  <% for user_page_permission in collection %>
+    <tr>
+      <td><%= user_page_permission.user.name %></td>
+      <td><%= icon user_page_permission.edit? ? :tick : :cross %></td>
+      <td><%= icon user_page_permission.publish? ? :tick : :cross %></td>
+      <td class="actions" align="right">
+        <%= link_to_with_icon 'edit', 'Edit', edit_object_url(user_page_permission) %> &nbsp;
+        <%= link_to "#{icon('delete')} Delete", object_path(user_page_permission), :method => :delete, :confirm => 'Are you sure?' %> &nbsp;       
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>

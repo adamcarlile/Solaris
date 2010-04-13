@@ -1,0 +1,8 @@
+<%= hidden_field_tag :parent, params[:parent] %>
+<%= hidden_field_tag :type, params[:type] %>
+
+<%= render @page.admin_template, :f => f %>
+
+<% unless @page.locked? %>
+  <%= render 'admin/generic/resource_buttons' %>
+<% end %>

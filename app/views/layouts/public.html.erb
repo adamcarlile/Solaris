@@ -1,0 +1,14 @@
+<%= render :partial => 'layouts/shared/header' %>
+	<div id="body">
+		<div class="wrapper">
+			<div id="content">
+				<%= render_breadcrumb unless homepage? %>
+				<%= render_flash %>
+				<%= yield %>
+			</div>
+			<div id="support">
+				<%= yield :sidebar %>
+			</div>
+		</div>
+	</div>
+<%= render :partial => 'layouts/shared/footer' %>

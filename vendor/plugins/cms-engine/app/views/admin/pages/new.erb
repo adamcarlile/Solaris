@@ -1,0 +1,15 @@
+<% @page_title = "Creating new page" %>
+
+<% create_form do |f| %>
+<fieldset>
+
+  <%= render 'new_form', :f => f %>
+  
+  <div>
+    <label for="type">Choose page type:</label><br />
+    <%= select_tag :type, options_for_select(@allowed_types.map{|t| [t.to_s.humanize.downcase, t]}), :id => "type" %>
+  </div>  
+
+</fieldset>
+<%= render 'admin/generic/resource_buttons' %>
+<% end %>

@@ -1,0 +1,82 @@
+<% @page_title = "#{@page.title} children" %>
+
+<p>
+  <%= link_to "#{icon('add')} Add child", new_admin_page_path(:parent => @page.id), :class => 'ajax_dialog_link', :target => "new_page_dialog" %>
+</p>
+
+
+<% if @pages.empty? %>
+  <p>No child pages.</p>
+<% else %>
+
+
+<% if @pages.length > 1 && !@page.archive? %>
+  <p class="tip">You can drag these pages to change their display order. Click &ldquo;Save changes&rdquo; when you&rsquo;re done</p>
+<% end %>
+
+<% form_tag reorder_children_admin_page_path(@page), :method => :put do %>
+  <table class="page_list index<%= ' sortable' unless @page.archive? %>">
+    <tr clas="nodrop nodrag">
+      <th>Title</th>
+      <th>Children</th>
+      <th width="100">Type</th>
+      <th width="120">&nbsp;</th>
+      <th width="100">&nbsp;</th>
+      <th width="70">&nbsp;</th>
+    </tr>
+    <tbody>
+  <% for page in @pages %>
+  <% node_type = page.is_a?(Folder) ? 'folder' : 'file' %>
+    <tr>
+      <td class="title">
+        <% if @pages.length > 1 && !@page.archive? %>
+        <%= text_field_tag "pages[#{page.id}][position]", page.position, :size => 2, :class => 'position' %>
+        <% end %>
+        <%= link_to "<span class=\"#{node_type}\">#{truncate(page.nav_title,25)}</span>", {:action => 'edit', :id => page.id}, :class => 'title' %>
+      </td>
+      <td>
+        <% if page.children_count > 0 %>
+          <%= pluralize(page.children_count,'child') %> 
+          <% if page.archive? %>
+            <%= link_to '(view)', edit_admin_page_path(page, :anchor => "Children") %>
+          <% end %>
+        <% end %>
+      </td>
+      <td><%= page.attributes['type'].to_s.underscore.humanize %></td>
+      <td>
+        <% if page.visitable? %>
+          <%= link_to_with_icon 'view', 'View in site', url_for_page(page), :target => '_blank' %>
+        <% else %>
+          <%= link_to_with_icon 'view', 'View in site'  %>
+        <% end %>
+      </td>
+      <td>
+        <% if page.can_have_children? %>
+          <%= link_to "#{icon('add')} Add child", new_admin_page_path(:parent => page.id), :class => 'ajax_dialog_link', :target => "new_page_dialog" %>
+        <% else %>
+          <%= link_to_with_icon 'add', 'Add child' %>
+        <% end %>    
+      </td>
+      <td>
+        <% if page.deleteable? and !page.locked? %>
+          <%= link_to_with_icon 'delete', 'Delete', admin_page_path(page, :return_to => 'Children'), :method => :delete, :confirm => "Are you sure? This can't be undone" %>
+        <% else %>
+          <%= link_to_with_icon 'delete', 'Delete' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+  <% unless @page.archive? %>
+  <p class="buttons">
+    <%= button "Save changes", :icon => 'tick' %>
+  </p>
+  <% end %>
+<% end %>
+
+<% if @page.archive? %>
+  <%= will_paginate @pages %>
+<% end %>
+
+<% end %>

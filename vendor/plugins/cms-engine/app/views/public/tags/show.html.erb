@@ -1,0 +1,9 @@
+<h1><%=  @page_title = "Items tagged with &ldquo;#{@tag.name}&rdquo;" %></h1>
+
+<% for taggable in @taggables %>
+<div class="search_result">
+  <h2><%= link_to h(taggable.title), url_for_page(taggable) %></h2>
+  <%= truncate taggable.intro, :length => 100 %>
+</div>
+<% end %>
+<%= will_paginate @taggings %>

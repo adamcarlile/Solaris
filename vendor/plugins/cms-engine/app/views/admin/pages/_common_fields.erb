@@ -1,0 +1,31 @@
+<table style="width:auto"><tr>
+  <% if current_user.has_role?(:editor) %>
+    <td>
+      <%= f.label :parent_id, 'Parent' %><br />
+      <select name="page[parent_id]">
+        <option value="">None (top level)</option>
+        <optgroup label="Select a parent navigation item">
+          <%= page_options @page.parent_id %>
+        </optgroup>
+      </select>
+    </td>
+    <% if @page.can_have_children? %>
+      <td>
+        <label>
+          <%= f.check_box :children_restricted %>
+          Children restricted?
+        </label>
+      </td>
+    <% end %>
+  <% end %>
+  <td width="230">
+    <%= label :page, :publish_from %><br />
+    <%= date_select :page, :publish_from, :order => [:day,:month,:year], :start_year => (Date.today.year - 5) %>
+  </td>
+  <td width="230">
+    <%= label :page, :publish_to %><br />
+    <%= date_select :page, :publish_to, :order => [:day,:month,:year], :start_year => (Date.today.year - 5), :include_blank => true %>
+  </td>
+</tr></table>
+
+<%= render('comment_settings_fields', :f => f) if current_user.has_role?(:editor) and @page.can_have_comments? %>

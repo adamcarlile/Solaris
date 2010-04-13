@@ -1,0 +1,15 @@
+/* line 1, sass/autocomplete.sass */
+.ac_results { padding: 0px; border: 1px solid black; background-color: white; overflow: hidden; z-index: 99999; }
+/* line 7, sass/autocomplete.sass */
+.ac_results ul { width: 100%; list-style-position: outside; list-style: none; padding: 0; margin: 0; }
+/* line 13, sass/autocomplete.sass */
+.ac_results li { margin: 0px; padding: 2px 5px; cursor: default; display: block; font: menu; font-size: 12px; line-height: 16px; overflow: hidden; text-align: left; }
+
+/* line 24, sass/autocomplete.sass */
+.ac_loading { background: white url('indicator.gif') right center no-repeat; }
+
+/* line 27, sass/autocomplete.sass */
+.ac_odd { background-color: #eee; }
+
+/* line 30, sass/autocomplete.sass */
+.ac_over { background-color: #0A246A; color: white; }

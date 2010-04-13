@@ -1,0 +1,47 @@
+<%= render 'menu' %>
+
+<div class="clearfix">
+
+  <div id="content_browser">
+
+    <% form_tag(admin_images_path, :method => :get) do %>
+      <fieldset>
+        <legend>Search by filename</legend>
+        <label for="q">Keyword</label> 
+        <br />
+        <%= text_field_tag :q, params[:q], :size => 15 %>
+        <input type="submit" value="Go" />
+      </fieldset>
+    <% end %>
+
+    <% if @tags %>
+    <fieldset class="tag_list">
+      <legend>Tags</legend>
+      <% for tag in @tags %>
+        <span><%= link_to tag.name, url_for(:overwrite_params => {:tag => tag.name}) %></span>
+      <% end %>
+      <br clear="left" />
+      <% if @tag %>
+      <p><%= link_to '(Clear)', admin_images_path %></p>
+      <% end %>
+    </fieldset>
+    <% end %>
+
+  </div>
+
+  <div id="page_attachments">
+
+    <% for image in @images -%>
+      <div class="thumb">
+      <%= link_to image_tag(image.file.url('thumb')), admin_image_path(image, :popup => params[:popup]), :title => image.title %>
+      </div>
+    <% end %>
+
+    <br clear="left" />
+
+    <%= will_paginate @images %>
+
+
+  </div>
+
+</div>

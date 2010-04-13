@@ -1,0 +1,19 @@
+<h3>Pending review</h3>
+<% if @pages_pending_review.any? %>
+
+  <table class="index">
+    <tr>
+      <th>Title</th>
+      <th>Last modified</th>
+    </tr>
+    <% for page in @pages_pending_review %>
+    <tr>
+      <td><%= link_to page.title, edit_admin_page_path(page) %></td>
+      <td>Date / user</td>
+    </tr>
+    <% end %>
+  </table>
+
+<% else %>
+  <p>No pages are currently pending review</p>
+<% end %>

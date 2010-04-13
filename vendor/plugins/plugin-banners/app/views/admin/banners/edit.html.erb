@@ -1,0 +1,13 @@
+<% @page_title = "Creating new #{human_model_name.humanize}" %>
+<%= render :partial => 'admin/shared/object_option_links', :object => object %>
+<div class="ui-tabs ajax">
+	<ul>
+		<li><a href="#edit">Edit</a></li>
+	</ul>
+	<div id="edit">
+		<% multipart ||= true %>
+		<% update_form :multipart => multipart do |f| %>
+		  <%= render :partial => 'form', :locals => {:f => f} %>
+		<% end %>
+	</div>
+</div>

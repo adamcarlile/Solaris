@@ -1,0 +1,9 @@
+<% @page_title = "Editing #{human_model_name.humanize}" %>
+
+<%= render 'admin/shared/object_option_links' %>
+
+<% multipart ||= false %>
+
+<% update_form :multipart => multipart do |f| %>
+  <%= render 'form', :f => f %>
+<% end %>

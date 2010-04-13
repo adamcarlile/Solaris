@@ -1,0 +1,18 @@
+<fieldset id="station">
+	<div class="title">
+	<%= f.field :name, :label => 'Name' %>
+	</div>
+	<%= f.field :url %>
+	<div class="left">
+		<p>
+			<%= f.label :banner %><br />
+			<%= f.file_field :banner %>
+		</p>
+	</div>
+	<div class="right">
+		<% if @object.banner %>
+			<%= image_tag @object.banner.url(:small) %> 
+		<% end %>
+	</div>
+</fieldset>
+<%= render 'admin/generic/resource_buttons' %>

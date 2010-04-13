@@ -1,0 +1,223 @@
+/*
+Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.2.2
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,th,var{font-style:normal;font-weight:normal;}
+ul {list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+abbr,acronym,a {border:0;}
+:focus{outline: none;}
+
+body {
+	font-size: 62.5%;
+	background-color:#666666;
+	color: #111111;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+
+div#header
+{
+	background-image:url(../images/backgrounds/blue-white.jpg);
+	background-position:top center;
+	background-repeat:repeat-x;
+	padding-top:20px;
+	background-color:#ffffff;
+}
+
+div#navigation
+{
+	background-color:#ffffff;
+}
+
+div#navigation div.wrapper
+{
+	overflow:hidden;
+}
+
+div#navigation ul
+{
+	float:right;
+	width:600px;
+	overflow:hidden;
+}
+
+div#navigation ul li
+{
+	float:left;
+	margin-left:10px;
+}
+
+div#navigation ul li a
+{
+	padding-top:7px;
+	padding-bottom:7px;
+	display:block;
+	text-align:center;
+	width:99px;
+	color:#ffffff;
+	font-size:1.4em;
+	background-color:#005670;
+	text-decoration:none;
+	background-image:url(../images/backgrounds/navshadow.jpg);
+	background-repeat:repeat-x;
+	background-position:bottom left;
+}
+
+div#navigation ul li.current a
+{
+	background-color:#00baf2;
+	background-image:none;
+}
+
+div#branding
+{
+	background-image:url(../images/backgrounds/blue-darkblue.jpg);
+	background-repeat:repeat-x;
+}
+
+div#branding div.inner
+{
+	overflow:hidden;
+	color:#ffffff;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+div#branding div.inner h2
+{
+	font-size:3.6em;
+	text-shadow:1px 1px 0px #000000;
+	letter-spacing: -2px;
+	line-height:42px;
+	margin-bottom:20px;
+}
+
+div#branding div.inner p
+{
+	font-size:1.1em;
+	line-height:18px;
+	margin-bottom:20px;
+}
+
+div#branding div.inner div.left
+{
+	float:left;
+	width:300px;
+}
+
+div#branding div.inner div.right
+{
+	float:left;
+	width:635px;
+	margin-left:5px;
+}
+
+div#branding div.inner div#spinner
+{
+	height:307px;
+	background-image:url(../images/backgrounds/spinner_bg.png);
+	background-repeat:no-repeat;
+}
+
+div#body
+{
+	background-color:#ffffff;
+	overflow:hidden;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+div#body div.col h3
+{
+	padding:10px;
+	background-image:url(../images/backgrounds/blue-darkblue-small.jpg);
+	background-repeat:repeat-x;
+	background-position:bottom center;
+	font-size:2.4em;
+	text-shadow:1px 1px 0px #000000;
+	color:#ffffff;
+	letter-spacing:-1px;
+}
+
+div#body div.col
+{
+	background-color:#eaeaea;
+	min-height:412px;
+	position:relative;
+}
+
+div#body div.col div.inner
+{
+	padding:10px;
+}
+
+div#body div.col div.inner p
+{
+	font-size:12px;
+	line-height:16px;
+	margin-bottom:10px;
+}
+
+div#body div.col a.button
+{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+}
+
+div#footer
+{
+	background-image:url(../images/backgrounds/footer-gray.jpg);
+	background-position:top center;
+	background-repeat:repeat-x;
+	padding-top:20px;
+}
+
+div.wrapper
+{
+	width:940px;
+	margin:auto;
+	text-align:left;
+}
+
+.button
+{
+	display:block;
+	background-image:url(../images/buttons/button-standard.png);
+	background-repeat:no-repeat;
+	width:95px;
+	height:33px;
+	text-align:center;
+	font-size:11px;
+	color:#ffffff;
+	line-height:36px;
+	text-decoration:none;
+}
+
+.button:hover
+{
+	background-image:url(../images/buttons/button-standard_hover.png);
+}
+
+.button:active
+{
+	background-image:url(../images/buttons/button-standard_click.png);
+}
+
+div.col
+{
+	width:300px;
+	min-height:1px;
+	float:left;
+	margin-right:20px;
+}
+
+div.last
+{
+	margin-right:0px;
+}

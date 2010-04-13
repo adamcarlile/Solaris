@@ -1,0 +1,17 @@
+development:
+  adapter: mysql
+  database: solaris_development
+  username: root
+  host: localhost 
+  
+test:
+  adapter: mysql
+  database: solaris_test
+  username: root
+  host: localhost
+  
+cucumber:
+  adapter: mysql
+  database: solaris_test
+  username: root
+  host: localhost

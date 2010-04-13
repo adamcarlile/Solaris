@@ -1,0 +1,6 @@
+<p>
+  <%= link_to icon('add')+" Add a new #{human_model_name}", new_object_url %> &nbsp;
+  <% if @controller.respond_to?(:reorder) %>
+    <%= link_to image_tag('/images/admin/reorder.gif')+" Reorder #{human_model_name.pluralize}", :action => 'reorder' %>
+  <% end %>
+</p>

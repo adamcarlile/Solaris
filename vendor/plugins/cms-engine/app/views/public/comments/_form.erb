@@ -1,0 +1,25 @@
+<% form_for current_object.comments.build, :url => comments_path do |f| %>
+  <%= f.hidden_field :commentable_id %>
+  <%= f.hidden_field :commentable_type %>
+  <fieldset>
+    <legend>Add your comment</legend>
+    <p>
+      <%= f.label :name, 'Your name' %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :email, 'E-mail' %> (will not be displayed on the site)<br />
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :comment, 'Comment' %><br />
+      <%= f.text_area :comment, :cols => 60, :rows => 6 %><br />
+    </p>
+    <p>
+      <%= recaptcha_tags %>
+    </p>
+    <p>
+      <input type="submit" value="Add comment" />
+    </p>
+  </fieldset>
+<% end %>

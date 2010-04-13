@@ -1,0 +1,18 @@
+h3. Installation
+
+rails myapp
+cd myapp
+/script/plugin install git@github.com:bluestorm/cms-engine.git
+
+rm public/index.html 
+
+# edit config/database.yml - you need a 'cucumber' env with same settings as test to run features
+
+# add the following line to environment.rb (I put under the gems)
+eval(File.read("#{RAILS_ROOT}/vendor/plugins/cms-engine/config/environment.rb"))
+
+./script/generate cms_engine
+                              
+rake cms:db:bootstrap
+
+./script/server start

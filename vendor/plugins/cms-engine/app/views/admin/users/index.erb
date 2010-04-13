@@ -1,0 +1,52 @@
+<% filter_form do %>
+  <legend>Filter users</legend>
+  <p><label>With roles:</label>
+  <% for role in Role.all %>
+    <label><%= check_box_tag "roles[]", role.id, (params[:roles] and params[:roles].include?(role.id.to_s)) %> <%= role.name %></label> 
+  <% end %>
+  </p>
+  <p><%= text_filter_tag :name, :label => 'Name contains:' %></p>
+  <p><%= array_filter_tag(:state, ['pending', 'active', 'suspended']) %></p>
+  
+<% end %>
+
+<%= render 'admin/shared/collection_option_links' %>
+
+<% if collection.length > 0 %>
+<table class="index">
+  <tr>
+    <th>Role</th>
+    <th>Created</th>
+    <th>Name</th>
+    <th>State</th>
+    <th>&nbsp;</th>
+  </tr>
+<% for object in collection %>
+<tr>
+  <td width="32">
+    <% if object.admin? %>
+      <%= icon 'user_suit' %>
+    <% elsif object.has_role?(:cms_user) %>
+      <%= icon 'user_gray' %>
+    <% else %>
+      <%= icon 'user_green' %>
+    <% end %>
+  </td>
+  <td><%= format_date object.created_at %></td>
+  <td><%= object.name %></td>
+  <td><%= object.state %></td>
+  <td class="actions" align="right">
+    <%= link_to_with_icon 'edit', 'Edit', edit_object_url(object) %> &nbsp;
+    <%= link_to "#{icon('delete')} Delete", object_path(object), :method => :delete, :confirm => 'Are you sure?' %> &nbsp; 
+  </td>
+</tr>
+<% end %>
+</table>
+<%= will_paginate collection %>
+<% end %>
+
+<ul class="legend">
+  <li><%= icon 'user_suit' %> Admin</li>
+  <li><%= icon 'user_gray' %> Other CMS users</li>
+  <li><%= icon 'user_green' %> Members</li>
+</ul>

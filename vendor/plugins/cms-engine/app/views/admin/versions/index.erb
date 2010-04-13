@@ -1,0 +1,56 @@
+<% publishable_by_user = parent_object.publishable_by?(current_user) %>
+
+<fieldset id="status">
+  <p>
+    <strong>Currently published version:</strong> <%= parent_object.version %>, 
+    <strong>Latest version:</strong> <%= parent_object.latest_version.version %>
+  </p>
+  <% if parent_object.has_unpublished_changes? %>
+    <% if publishable_by_user %>
+      <% form_tag(publish_version_path(parent_object.latest_version), :method => :put) do %>
+        <p class="buttons"><%= button 'Publish latest verison', :icon => 'tick' %></p>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>No unpublished changes</p>
+  <% end %>
+</fieldset>
+
+<p class="tip">Reverting creates a new version which is a copy of the chosen version. This will become the latest version and the page will be in Draft state. Publish the page to make the reverted version live.</p>
+
+<table class="index">
+  <tr>
+    <th width="20">#</th>
+    <th>Created</th>
+    <th>By</th>
+    <th>Comment</th>
+    <th>Status</th>
+    <% if parent_object.is_a?(Image) %>
+    <th>Preview</th>
+    <% end %>
+  </tr>
+<% for version in collection %>
+  <tr>
+    <td><%= version.version %></td>
+    <td><%= format_date version.created_at %></td>
+    <td><% if version.user %><%= version.user.name %><% end %></td>
+    <td><%= version.version_comment %></td>
+    <td>
+      <% if version.revertable? and publishable_by_user %>
+        <%= link_to 'Revert', send("revert_admin_#{parent_type}_version_path", parent_object, version), :method => :put, :confirm => "Are you sure?" %>
+        | <%= link_to 'Preview', edit_parent_object_path(:version => version.version) %>
+      <% end %>
+      <% if version.version == parent_object.version %>
+        &nbsp;<strong>(Published)</strong>
+      <% end %>
+    </td>
+    <% if parent_object.is_a?(Image) %>
+    <td>
+      <%= image_tag version.file.url(:thumb), :width => 40 %>
+    </td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+    
+<%= will_paginate collection %>

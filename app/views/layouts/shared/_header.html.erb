@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><%= @page_title %>-<%= SITE_NAME %></title>
+<%= tag 'meta', :content => @meta_keywords, :name => 'keywords' unless @meta_keywords.blank? %><%= tag 'meta', :content => @meta_description, :name => 'description' unless @meta_description.blank? %>
+<!-- Meta Tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Favicon -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<!-- CSS -->
+<%= stylesheet_link_tag '/stylesheets/main.css' %>
+<!--[if IE]>
+<%= stylesheet_link_tag '/stylesheets/ie_all.css', :media => 'screen,projection' %>
+<![endif]-->
+<!--[if !IE 7]>
+<%= stylesheet_link_tag '/stylesheets/ie.css', :media => 'screen,projection' %>
+<![endif]-->
+<%= stylesheet_link_tag '/stylesheets/print.css', :media => 'print' %>
+<!-- Javascript -->
+<%= yield :head %>
+</head>
+<body>
+	<div id="header">
+		<div class="wrapper">
+			<h1><%= image_tag('/images/solaris.png', :alt => 'Solaris Mobile')%></h1>
+			<%= render 'public/shared/search_form' %>
+	    <%= render "public/shared/user_nav" %>
+		</div>
+	</div>
+	<div id="navigation">
+		<div class="wrapper">
+			<%= render_global_nav %>
+		</div>
+	</div>
+	<div id="branding">
+		<div class="wrapper">
+			<%= yield(:branding) || render(:partial => 'layouts/shared/default_branding') %>
+		</div>
+	</div>

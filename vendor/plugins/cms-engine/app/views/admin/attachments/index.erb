@@ -1,0 +1,45 @@
+<p>
+  <%= link_to_with_icon 'add', 'Upload a new attachment', new_admin_page_attachment_path(@page), :class => 'dialog_link', :id => 'new_attachment', :target => 'new_attachment_dialog' %> &nbsp; 
+</p>
+
+<div class="clearfix">
+
+<div id="content_browser" class="ajax">
+
+  <% form_tag(search_admin_page_attachments_path, :method => :get) do %>
+    <fieldset>
+      <legend>Search by type/keyword</legend>
+      <label for="type">Type</label> /
+      <label for="q">Keyword</label> 
+      <br />
+      <%= select_tag :type, options_for_select([['Images','image'],['Files','file_upload']]) %>
+      <%= text_field_tag :q, params[:q], :size => 15 %>
+      <input type="submit" value="Go" />
+    </fieldset>
+  <% end %>
+
+  <% if @tags %>
+  <fieldset class="tag_list">
+    <legend>Tags</legend>
+    <% for tag in @tags %>
+      <span><%= link_to tag.name, search_admin_page_attachments_path(:tag => tag.name) %></span>
+    <% end %>
+    <br clear="left" />
+  </fieldset>
+  <% end %>
+
+  <div class="results"></div>  
+
+
+</div>
+
+<div id="page_attachments">
+  <%= render 'attachments_list' %>  
+</div>
+
+</div>
+
+
+<div class="dialog" id="new_attachment_dialog" title="Upload new attachment">
+  <%= render 'new_attachment_form' %>
+</div>

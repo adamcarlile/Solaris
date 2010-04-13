@@ -1,0 +1,34 @@
+<% if @comments.any? %>
+
+<p>The following comments are pending approval.</p>
+
+  <table class="index">
+    <tr>
+      <th width="150">On</th>
+      <th>Comment</th>
+      <th width="150">&nbsp;</th>
+    </tr>
+  <% for comment in @comments %>
+    <tr>
+      <td><%= comment.commentable %></td>
+      <td>
+        By <strong><%= comment.email.blank? ? h(comment.name) : mail_to(comment.email, h(comment.name)) %></strong> on <strong><%= format_date comment.created_at %></strong><br />
+        <%= simple_format h(comment.comment) %>
+      </td>
+      <td class="actions" align="right" style="width:200px">
+        <%= link_to_with_icon 'tick', 'Approve', approve_admin_comment_path(comment), :method => :put %> &nbsp;
+        <%= link_to_with_icon 'edit', 'Edit', edit_admin_comment_path(comment) %> &nbsp;
+        <%= link_to "#{icon('delete')} Delete", admin_comment_path(comment), :method => :delete, :confirm => 'Are you sure?' %> &nbsp; 
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<%= will_paginate @comments %>    
+
+
+
+<% else %>
+
+  <p>There are no comments pending approval.</p>
+
+<% end %>

@@ -1,0 +1,28 @@
+<h3>Assigned to you</h3>
+<% if @assigned_publishable_events.any? %>
+
+<table class="index">
+  <tr>
+    <th>Assigned to you</th>
+    <th>Title</th>
+    <th>Action</th>
+    <th>Comment</th>
+  </tr>
+  <% for event in @assigned_publishable_events %>
+  <tr>
+    <td><%= format_date event.created_at %> by <%= event.user %></td>
+    <td>
+      <% if event.publishable %>
+        <%= link_to event.publishable.to_s, send("edit_admin_#{event.publishable_type.underscore}_path", event.publishable) %>
+      <% end %>
+    </td>
+    <td><%= event.event_name %></td>
+    <td><%= event.comment %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @assigned_publishable_events %>
+<% else %>
+  <p>No items are currently assigned to you</p>
+<% end %>

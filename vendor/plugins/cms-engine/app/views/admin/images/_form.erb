@@ -1,0 +1,22 @@
+<%= hidden_field_tag :popup, params[:popup] %>
+<fieldset>
+  <p class="title">
+    <%= f.label :title %> (used for alt text)<br />
+    <%= f.text_field :title, :size => 60, :class => 'large' %>
+    <%= f.error_message_on :title %>    
+  </p>
+
+  <p>
+    <%= f.label :tag_list, 'Tags' %> (space separated, tags may be enclosed in quotes)<br />
+    <%= f.text_field :tag_list, :size => 80, :style => "width:100%", :class => 'tags_autocomplete' %>
+  </p>
+
+  <p>
+    <%= f.label :file %> (jpeg, gif or png)<br />
+    <%= f.file_field :file %>
+    <%= f.error_message_on :file %>    
+  </p>    
+
+  <%= render 'admin/generic/resource_buttons' %>
+
+</fieldset>

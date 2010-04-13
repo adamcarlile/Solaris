@@ -1,0 +1,7 @@
+<% @page_title = "Creating new #{human_model_name.humanize}" %>
+
+<% multipart ||= false %>
+
+<% create_form :multipart => multipart do |f| %>
+  <%= render 'form', :f => f %>
+<% end %>

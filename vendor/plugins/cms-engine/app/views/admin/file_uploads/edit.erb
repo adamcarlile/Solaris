@@ -1,0 +1,11 @@
+<div class="ui-tabs ajax">
+	<ul>
+		<li><a href="#edit">Edit</a></li>
+		<li><a href="<%= admin_file_upload_versions_path(@file_upload) %>" title="History">History</a></li>
+	</ul>
+	<div id="edit">
+
+  <%= render 'admin/generic/edit', :multipart => true %>
+
+  </div>
+</div>

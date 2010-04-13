@@ -1,0 +1,39 @@
+<fieldset>
+  <legend><%= legend %></legend>
+  
+  <% if attachments.any? %>
+    <table class="sortable" id="content_items">
+      <tr class="nodrop nodrag">
+        <th colspan="2">Title</th>
+        <th>Details</th>
+        <th>&nbsp;</th>
+      </tr>
+      <% for attachment in attachments %>
+        <% content_item = attachment.attachable %>
+        <tr id="<%= dom_id content_item %>">
+          <td width="20">
+            <%= image_tag(content_item.thumb_url('small'), :size => "25x25") %>
+          </td>
+          <td>
+            <%= text_field_tag "page[attachments_attributes][][position]", attachment.position, :size => 2, :class => 'position' %>
+            <%= hidden_field_tag "page[attachments_attributes][][attachable_id]", attachment.attachable_id %>
+            <%= hidden_field_tag "page[attachments_attributes][][attachable_type]", attachment.attachable_type %>
+            <%= content_item.title %>
+          </td>
+          <td>
+            <%= content_item.details %>
+          </td>
+          <td class="actions" width="100">
+            <label>
+              <%= check_box_tag "page[attachments_attributes][][_delete]", true, false %>
+              Remove
+            </label>
+          </td>
+        </tr>
+      <% end %>
+      </tr>
+    </table>    
+  <% else %>
+    <p>No attachments of this type.</p>
+  <% end %>
+</fieldset>

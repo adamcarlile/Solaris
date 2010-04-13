@@ -1,0 +1,78 @@
+<%= render 'menu' %>
+
+<div class="ui-tabs ajax">
+	<ul>
+		<li><a href="#view">View</a></li>
+		<li><a href="<%= edit_admin_image_path(@image) %>" title="Edit">Edit</a></li>
+		<li><a href="<%= crop_settings_admin_image_url(@image, :popup => params[:popup]) %>" title="Resize">Resize/crop</a></li>
+		<li><a href="<%= admin_image_versions_path(@image) %>" title="History">History</a></li>
+	</ul>
+	<div id="view">
+
+
+    <p>View size: 
+      <select name="size" id="size" onchange="change_size()">
+      <%= options_for_select Image::SIZES.map {|size| 
+        [size.humanize, @image.permenant_url(size)] } %>
+      </select>
+    </p>
+
+    <p align="center"><%= image_tag(@image.permenant_url(Image::SIZES.first), :id => 'image_preview') %><br />
+  
+      <small>Image src: <span id="image_src"><%= @image.permenant_url(Image::SIZES.first) %></span></small>
+      </p>
+
+    <% if !params[:popup].blank? and params[:collection].nil? %>
+    <p><%= link_to_function "#{icon(:tick)} Use this image", "pickImage(#{@image.id},'#{@image.permenant_url('cropped')}')" %></p>
+    <% end %>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+window.focus();
+
+function change_size() {
+  src = $('#size').get(0).options[$('#size').get(0).selectedIndex].value;
+  $('#image_preview').attr('src', src);
+  $('#image_src').html(src);
+}
+
+function makeAttrib(attrib, value) {
+	return ' ' + attrib + '="' + value + '"';
+}
+
+function pickImage(id)
+{  
+  // create a simple image object
+  image = {
+    id:       <%= @image.id %>,
+    src: $('#image_preview').get(0).src.replace(/\?.*$/,''),
+    thumb_src:        '<%= @image.file.url('thumb') %>',
+    alt:       '<%= @image.to_s %>'
+    }
+  // pass this back to the callback defined when this popup was created
+  try {
+    window.opener.imageLibraryCallback(image,window);
+  } catch (e) {
+
+    window.opener.CKEDITOR.tools.callFunction(1, image.src);
+
+  	window.top.opener.focus();
+  	window.top.close() ;
+  }
+}
+
+</script>

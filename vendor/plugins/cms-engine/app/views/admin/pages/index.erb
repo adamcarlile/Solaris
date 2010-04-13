@@ -1,0 +1,21 @@
+<% @page_title = 'Site Structure' %>
+
+<p>Here you can manage the site&#8217;s navigation and content.</p>
+
+<table id="site-map" class="page_list index">
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Children</th>
+    <th width="100">Type</th>
+    <th width="120">&nbsp;</th>
+    <th width="100">&nbsp;</th>
+    <th width="70">&nbsp;</th>
+  </tr>
+</thead>
+<tbody>
+<%= page_rows @pages %>
+</tbody>
+</table>
+
+<div id="new_page_dialog" class="dialog" title="Create a new page"></div>

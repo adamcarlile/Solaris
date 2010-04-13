@@ -1,0 +1,5 @@
+<div class="comment">
+  <p>On <%= format_date comment.created_at %>, <strong><%= h comment.name %></strong> said:<br />
+  <%= simple_format h(comment.comment) %></p>
+  <%= admin_tools 'comment', :comment => comment %>
+</div>

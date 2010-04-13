@@ -1,0 +1,5 @@
+Description:
+  Create an modify necessary files to make cms-engine work in an empty Rails application
+
+script/generate cms_engine
+

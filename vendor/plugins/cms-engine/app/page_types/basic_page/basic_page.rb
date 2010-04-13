@@ -1,0 +1,3 @@
+class BasicPage < Page
+  
+end

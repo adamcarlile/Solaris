@@ -1,0 +1,4 @@
+<div class="search_result">
+  <h2><%= link_to h(result.title), url_for_search_result(result) %></h2>
+  <%= truncate result.intro, :length => 100 %>
+</div>

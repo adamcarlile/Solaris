@@ -1,0 +1,20 @@
+<% if @q.blank? %>
+  <h1>Search the site</h1>
+<% else %>
+  <h1>Search for &ldquo;<%= h @q %>&rdquo;</h1>
+  
+<% end %>
+
+<% if @results.spelling_correction %>
+<p class="spelling_correction">Did you mean <%= link_to @results.spelling_correction, search_path(:q => @results.spelling_correction) %>?</p>
+<% end %>
+
+
+<% if @results.any? %>
+
+  <%= render :collection => @results, :partial => 'result' %>
+  <%= will_paginate @results %>
+  
+<% else %>
+  <p>Sorry, there were no results for your search.</p>
+<% end %>

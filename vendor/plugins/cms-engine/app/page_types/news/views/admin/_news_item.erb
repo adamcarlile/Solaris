@@ -1,0 +1,13 @@
+<fieldset>
+
+  <div class="title">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+    <%= f.error_message_on :title %>
+  </div>
+
+  <%= render 'admin/pages/common_fields', :f => f %>  
+  <%= render 'admin/pages/meta_fields', :f => f %>
+  <%= render 'admin/pages/page_content_fields', :f => f %>
+            
+</fieldset>

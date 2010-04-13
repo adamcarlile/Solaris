@@ -1,0 +1,140 @@
+<% @page_title = human_model_name.humanize.pluralize %>
+
+<%= render :partial => 'admin/shared/collection_option_links' %>
+<style>
+ul#banners
+{
+	margin:0px;
+	padding:0px;
+}
+
+ul#banners > li
+{
+	margin:0px;
+	padding:0px;
+	padding:10px;
+	background-color:#efefef;
+	margin-top:5px;
+	margin-bottom:5px;
+	border:1px solid #cccccc;
+	list-style:none;
+	overflow:hidden;
+	float:left;
+	clear:both;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+}
+
+ul#banners > li img
+{
+	margin:0px;
+	padding:0px;
+}
+
+ul#banners li > ul
+{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+	float:left;
+	border-left:1px solid #cccccc;
+}
+
+ul#banners li > ul li
+{
+	border-left:1px solid #ffffff;
+	padding-left:10px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+ul#banners li div.container
+{
+	position:relative;
+	float:left;
+	padding-right:10px;
+	cursor:move;
+	overflow:hidden;
+}
+
+ul#banners li div.container div.info
+{
+	position:absolute;
+	bottom:4px;
+	left:0px;
+	background-color:#000000;
+	padding:5px;
+	padding-left:10px;
+	padding-right:10px;
+	color:#ffffff;
+}
+
+ul#banners li div.container div.info p
+{
+	margin:0px;
+	padding:0px;
+}
+
+</style>
+<script type="text/javascript">
+//public/javascripts/application.js
+
+// This sets up the proper header for rails to understand the request type,
+// and therefore properly respond to js requests (via respond_to block, for example)
+$.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+	$(document).ready(function() {
+
+  // UJS authenticity token fix: add the authenticy_token parameter
+  // expected by any Rails POST request.
+  	$(document).ajaxSend(function(event, request, settings) {
+    // do nothing if this is a GET request. Rails doesn't need
+    // the authenticity token, and IE converts the request method
+    // to POST, just because - with love from redmond.
+    if (settings.type == 'GET') return;
+    if (typeof(AUTH_TOKEN) == "undefined") return;
+    settings.data = settings.data || "";
+    settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+  });
+
+	});
+  $(document).ready(function() {
+		$('ul#banners').sortable({
+		  axis: 'y', 
+		  dropOnEmpty:false, 
+		  cursor: 'move',
+		  opacity: 0.8,
+		  scroll: true,
+		  update: function(){
+		    $.ajax({
+		        type: 'post', 
+		        data: $('ul#banners').sortable('serialize'), 
+		        dataType: 'script', 
+		        url: '<%= sort_admin_banners_path %>'})
+		    }
+		  })
+	})
+</script>
+<ul id="banners">
+<% collection.each do |object| %>
+	<li class="handle" id="banner_<%= object.id -%>">
+		<div class="container">
+			<%= image_tag object.banner.url(:banner) %>
+			<div class="info">
+				<h4><%= object.name %></h4>
+				<p><%= object.url %></p>
+			</div>
+		</div>
+		<ul>
+			<li>
+				<%= link_to_with_icon 'edit', 'Edit', edit_object_url(object) %>
+			</li>
+			<li>
+	      <%= link_to "#{icon('delete')} Delete", object_path(object), :method => :delete, :confirm => 'Are you sure?' %> &nbsp;
+			</li>
+		</ul>
+	 </li>
+<% end %>
+</ul>

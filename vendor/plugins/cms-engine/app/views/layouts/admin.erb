@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <% @page_title ||= controller.controller_name.humanize %>
+  <title><%= @page_title %> - <%= SITE_NAME %> Administration</title>
+
+  <%= render 'admin/shared/scripts_and_styles' %>
+
+	<%= yield :head %>
+</head>
+<body>
+  
+<div id="header">
+
+  <div id="site-title">
+    <%= link_to SITE_NAME, admin_dashboard_path %>
+    <span id="site-subtitle">Content Management</span>
+  </div>
+
+  <div id="login_info">
+    Logged in as <%= @current_user %> | 
+    <%= link_to 'Log out', logout_path %> |
+		<%= link_to 'Sitemap', sitemap_admin_pages_path %> |
+    <%= link_to 'View website &raquo;', homepage_url %>
+  </div>
+
+  <div id="tabs">
+    <%= render 'admin/shared/tabs' %>
+  </div>
+
+</div>
+
+
+<div id="content">
+
+  <%= render_flash %>
+  <h1><%= @page_title %></h1>
+
+  <%= yield %>
+
+</div>
+
+
+</body>
+</html>

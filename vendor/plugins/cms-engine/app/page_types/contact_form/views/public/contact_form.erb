@@ -1,0 +1,53 @@
+<% content_for :sidebar do %>
+  <h2><%= @root_page %></h2>
+  <%= render_list_nav @root_page %>
+<% end %>
+
+
+<% if params[:sent] %>
+
+  <%= render 'contact_form/views/public/contact_form_sent' %>
+
+<% else %>
+
+  <%= render 'public/shared/page_body' %>
+
+  <% form_for :enquiry, @enquiry, :url => enquiries_url, :html => {:id => 'enquiry_form'} do |f| %>
+    <%= hidden_field_tag :slug_path, @page.slug_path %>
+    <%= f.field :name, :label => 'Name' %>
+    <%= f.field :email, :label => 'Email' %>
+    <%= f.field :telephone, :label => 'Telephone' %>
+    <%= f.field :company, :label => 'Company' %>
+    <%= f.field :role, :label => 'Role' %>
+    <%= f.field :address_1, :label => 'Address 1' %>
+    <%= f.field :address_2, :label => 'Address 2' %>
+    <%= f.field :city, :label => 'City' %>
+    <%= f.field :county, :label => 'County' %>
+    <%= f.field :postcode, :label => 'Postcode' %>
+
+    <p>Where did you find out about us?</p>
+    <%= f.select :referal,
+    {"Newspaper" => "Newspaper", "Search Engine" => "Search Engine", "Advertising" => "Advertising", "Direct Mail" => "Direct Mail"}
+    %>
+
+    <div class="form_margin">
+      <%= f.field :message, 
+      :helper => :text_area, 
+      :helper_options => {:rows => 8},
+      :label => 'Message'
+      %>
+    </div>
+
+    <div class="form_margin">		
+      <p>Be among the first to hear about new developments</p>
+      <%= f.field :newsletter, :helper => :check_box, :label => 'Sign up now to our newsletter' %>
+    </div>
+
+    <%= recaptcha_tags %>
+
+    <input type="submit" id="submitbutton"  value="Send message" />
+
+    <p class="note">Please note your details will be kept confidential and will never be passed on to any third parties.</p>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,23 @@
+<%- content_for :sidebar do -%>
+<div id="sidenav">
+  <h2>Archive</h2>
+  <ul class="nav">
+    <% for month in NewsIndex.archive_months -%>
+    <li><%= link_to "#{Date::MONTHNAMES[month[:month]]} #{month[:year]}", url_for_page(@page, month) %></li>
+    <% end -%>
+  </ul>
+</div>
+<%- end -%>
+
+<%= render 'public/shared/page_body' %>
+
+<% for news_item in @news_items %>
+<div class="divider">
+	<h2><%= link_to "#{news_item.title}", url_for_page(news_item) %></h2>
+	<p class="date"><%= format_date news_item.created_at %></p>
+	<p><%= news_item.intro %></p>
+	<p class="readmore"><%= link_to 'Read the rest of this entry', url_for_page(news_item), :title => "Read the rest of the article '#{news_item.title}'" %></p>
+</div>
+<% end %>
+
+<%= will_paginate @news_items, :renderer => CmsEngine::LinkRenderer %>

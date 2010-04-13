@@ -1,0 +1,20 @@
+<%= render 'admin/generic/edit' %>
+
+<br clear="left" />
+
+<% form_tag fire_event_admin_user_path, :method => :put do %>
+<fieldset>
+  <legend>Update user&rsquo;s status (currently <%= @user.state %>)</legend>
+
+  <% if @user.state_events.any? %>
+    <p class="buttons">
+      <% for event in @user.state_events %>
+        <%= link_button event.to_s.humanize, fire_event_admin_user_path(:event => event), :method => :put, :confirm => 'Are you sure?' %> &nbsp; 
+      <% end %>
+    </p>
+  <% else %>
+    <p>No actions available.</p>
+  <% end %>
+
+</fieldset>
+<% end %>

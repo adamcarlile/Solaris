@@ -1,0 +1,130 @@
+<%- content_for :head do %>
+<script>
+replace_ids = function(s){
+  var new_id = new Date().getTime();
+  return s.replace(/NEW_RECORD/g, new_id);
+}
+
+$(document).ready(function(){
+	$('a.remove').live('click', function(e){
+		e.preventDefault();
+		$(this).closest('div').remove();
+	})
+	
+	$('a.mark_for_destroy').live('click', function(e){
+		e.preventDefault();
+		$(this).next('input.destroy_field').val('1');
+		$(this).closest('div').hide();
+	})
+	
+	var panel = '<%= generate_template(f, :panels, :object => @page.panels.new) %>'
+
+	$('a#add_panel_to_page').click(function(e){
+		e.preventDefault();
+		replaced = replace_ids(panel)
+		$('div#panels').append(replaced)
+	}) 
+	
+	$('div#panels').sortable({
+	  dropOnEmpty:false, 
+	  cursor: 'move',
+	  opacity: 0.8,
+	  scroll: true,
+	  update: function(){
+	    $.ajax({
+	        type: 'post', 
+	        data: $('div#panels').sortable('serialize'), 
+	        dataType: 'script', 
+	        url: '<%= reorder_admin_page_panels_path(@page) %>'
+				})
+	    }
+	  })
+	
+})
+</script>
+<style>
+div#panels
+{
+	overflow:hidden;
+}
+
+div.col
+{
+	width:300px;
+	margin-right:10px;
+	background-color:#f1f1f1;
+	float:left;
+	padding:10px;
+}
+
+div.col input, div.col textarea
+{
+	width:280px;
+	margin-bottom:10px;
+}
+
+div.col textarea
+{
+	padding:2px;
+}
+
+div.col h3
+{
+	padding:10px;
+	background-image:url(/images/backgrounds/blue-darkblue-small.jpg);
+	background-repeat:repeat-x;
+	background-position:bottom center;
+	font-size:18px;
+	text-shadow:1px 1px 0px #000000;
+	color:#ffffff;
+	margin-bottom:0px;
+	margin-top:0px;
+	letter-spacing:-1px;
+}
+
+div.col p
+{
+	padding:10px;
+}
+
+div.panelElement
+{
+	position:relative;
+}
+
+div#panels a.ui-state-default
+{
+	display:block;
+	width:16px;
+	height:16px;
+	position:absolute;
+	top:5px;
+	right:5px;
+}
+</style>
+<%- end %>
+<fieldset>
+
+  <div class="title">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+    <%= f.error_message_on :title %>
+  </div>
+
+  <%= render 'admin/pages/common_fields', :f => f %>  
+  <%= render 'admin/pages/meta_fields', :f => f %>             
+  <%= render 'admin/pages/page_content_fields', :f => f %>
+
+</fieldset>
+
+<fieldset>
+	<legend>Homepage Panels</legend>
+	<div id="panels">
+		<% f.fields_for :panels do |p_f| %>	
+			<%= render :partial => 'panel', :locals => { :f => p_f } %>
+		<% end %>
+	</div>
+	<p class="buttons" style="margin-top:10px;">
+		<a href="#" id="add_panel_to_page" class="positive">Add a new Priority</a>
+	</p>
+</fieldset>

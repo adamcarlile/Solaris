@@ -1,0 +1,25 @@
+<% @page_title = "Editing Comment" %>
+
+<% update_form do |f| %>
+
+  <fieldset>
+    <p>
+      <%= f.label :name, 'Your name' %><br />
+      <%= f.text_field :name %>
+      <%= f.error_message_on :name %>
+    </p>
+    <p>
+      <%= f.label :email, 'E-mail' %><br />
+      <%= f.text_field :email %>
+      <%= f.error_message_on :email %>
+    </p>
+    <p>
+      <%= f.label :comment, 'Comment' %><br />
+      <%= f.text_area :comment, :cols => 60, :rows => 6 %><br />
+      <%= f.error_message_on :comment %>
+    </p>
+    <%= render 'admin/generic/resource_buttons' %>
+  </fieldset>
+
+
+<% end %>

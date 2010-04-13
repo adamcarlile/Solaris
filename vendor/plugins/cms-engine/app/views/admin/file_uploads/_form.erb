@@ -1,0 +1,24 @@
+<%= hidden_field_tag :popup, params[:popup] %>
+<fieldset>
+  
+  <p>
+    <%= f.label :title %> (optional, defaults to file name)<br />
+    <%= f.text_field :title, :size => 60 %>
+    <%= f.error_message_on :title %>    
+  </p>
+
+  <p>
+    <%= f.label :tag_list, 'Tags' %> (space separated, tags may be enclosed in quotes)<br />
+    <%= f.text_field :tag_list, :size => 80, :style => "width:100%", :class => 'tags_autocomplete' %>
+  </p>
+
+  <% if current_object.new_record? %>
+  <p>
+    <%= f.label :file %><br />
+    <%= f.file_field :file %>
+    <%= f.error_message_on :file %>    
+  </p>    
+  <% end %>
+
+  <%= render 'admin/generic/resource_buttons' %>
+</fieldset>
