@@ -1,0 +1,105 @@
+<% @page_title = "Editing &#8220;#{@page}&#8221;" %>
+
+<%= admin_page_breadcrumbs %>
+
+<div class="ui-tabs ajax">
+	<ul>
+		<li><a href="#edit">Edit</a></li>
+		<% if @page.can_have_children? %>
+		<li><a href="<%= children_admin_page_path(@page) %>" title="Children">Child pages</a></li>
+		<% end %>
+		<li><a href="#status">Status (<%= @page.state.to_s.humanize %>)</a></li>
+		<% if @page.visitable? %>
+		<li><a href="<%= admin_page_attachments_path(@page, :version => params[:version]) %>" title="Attachments">Attachments</a></li>
+		<% end %>
+		<li><a href="<%= admin_page_versions_path(@page) %>" title="History">History</a></li>
+		<% if @page.can_have_user_permissions? and current_user.admin? %>
+		<li><a href="<%= admin_page_user_page_permissions_path(@page) %>" title="Permissions">User permissions</a></li>
+		<% end %>
+	</ul>
+
+	<div id="edit">
+		<%= content_tag('div', error_messages_for('page'), :id => 'error') unless error_messages_for('page').empty? %>
+    <% update_form :multipart => true do |f| %>
+      <%= render 'form', :f => f %>
+    <% end %>
+
+	</div>
+	
+	<div id="status">
+    <% form_tag fire_event_admin_page_path(@page), :method => :put do %>
+      <fieldset>
+        <legend>Status</legend>
+        <p>
+          Current status: <strong><%= @page.state.humanize.downcase %></strong>, 
+          Visible on site? <strong><%= @page.visible_on_site? ? 'Yes' : 'No' %></strong>
+        </p>
+        <p>
+          <label for="event">Action</label><br />
+          <%= select_tag :event, options_for_select(@page.state_events_for_user(current_user).map{|s| [s.to_s.humanize,s]}) %>
+        </p>
+        <p id="user_field">
+          <label for="comment">Assign to</label><br />
+          <% 
+          editor_users = @page.users_who_can_publish
+          contributor_users = @page.contributors - editor_users
+          contributor_user_options = options_for_select(contributor_users.map{|u| ["#{u.name} (contributor)", u.id] })
+          editor_user_options = options_for_select(editor_users.map{|u| ["#{u.name} (editor)", u.id] })
+           %>
+          <%= select_tag :user_id, '<option></option>' + contributor_user_options + editor_user_options %>
+        </p>
+        <p>
+          <label for="comment">Comment</label><br />
+          <%= text_area_tag :comment, '', :cols => 60, :rows => 2 %>
+        </p>
+        <p>
+          <input type="submit" value="GO" />
+        </p>
+      </fieldset>
+    <% end %>
+
+    <table class="index">
+      <tr>
+        <th>Date</th>
+        <th>By</th>
+        <th>Assigned to</th>
+        <th>Event</th>
+        <th>Status</th>
+        <th>Comment</th>
+      </tr>
+      <% for publishable_event in @page.publishable_events %>
+      <tr>
+        <td><%= format_date publishable_event.created_at %></td>
+        <td><%= publishable_event.user.name if publishable_event.user %></td>
+        <td><%= publishable_event.assigned_user.name if publishable_event.assigned_user %></td>
+        <td><%= publishable_event.event_name %></td>
+        <td><%= publishable_event.from_state %> &rarr; <%= publishable_event.to_state %></td>
+        <td><%= publishable_event.comment %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <fieldset>
+      <legend>Info</legend>
+      <p>
+        <strong>Created</strong> <%= format_date @page.created_at %>
+        <% if @page.created_by %>by <%= @page.created_by.name %><% end %>
+      </p>
+      <p>
+        <strong>Last updated</strong> <%= format_date @page.updated_at %>
+        <% if @page.updated_by %>by <%= @page.updated_by.name %><% end %>
+      </p>
+      
+      <p><strong>Currently published version:</strong> <%= @page.version %></p>
+      <p><strong>Latest version:</strong> <%= @page.latest_version.version %></p>
+      <% if @page.has_unpublished_changes? %>
+        <p>Has unpublished changes</p>
+      <% else %>
+        <p>No unpublished changes</p>
+      <% end %>
+    </fieldset>
+  </div>
+	
+</div>
+
+<div id="new_page_dialog" class="dialog" title="Create a new page"></div>
