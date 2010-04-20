@@ -17,14 +17,20 @@
 <![endif]-->
 <%= stylesheet_link_tag '/stylesheets/print.css', :media => 'print' %>
 <!-- Javascript -->
+<%= javascript_include_tag "jquery.1.4.js" %>
+<%= javascript_include_tag "jquery.easing.js" %>
+<%= javascript_include_tag "jquery.anythingslider.js" %>
+<%= javascript_include_tag "application.js" %>
 <%= yield :head %>
 </head>
 <body>
 	<div id="header">
 		<div class="wrapper">
 			<h1><%= image_tag('/images/solaris.png', :alt => 'Solaris Mobile')%></h1>
-			<%= render 'public/shared/search_form' %>
-	    <%= render "public/shared/user_nav" %>
+			<div id="userpanel">
+				<%= render 'public/shared/search_form' %>
+	    	<%= render "public/shared/user_nav" %>
+			</div>
 		</div>
 	</div>
 	<div id="navigation">

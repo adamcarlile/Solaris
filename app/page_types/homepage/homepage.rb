@@ -5,7 +5,8 @@ class Homepage < Page
   
   def render(params)
     {
-      :panels => self.panels
+      :panels => self.panels,
+      :banners => Banner.all
     }
   end
   
