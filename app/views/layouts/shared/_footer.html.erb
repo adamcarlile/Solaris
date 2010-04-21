@@ -1,18 +1,46 @@
 	<div id="footer">
 		<div class="wrapper">
 			<div class="col">
+				<ul class="newsitems">
+				<% @footer_news.each do |news| %>
+					<li class="<%= cycle('odd','even')%>">
+						<%= datebox(news.publish_from)%>
+						<%= content_tag('h4', link_to(news.title, url_for_page(news)))%>
+						<%= content_tag('p', truncate(news.intro, :length => 200))%>
+						<%= link_to('Read more', url_for_page(news), :class => 'more')%>
+					</li>
+				<% end %>
+				</ul>
+				<div class="address">
+					<div class="left">
+					<%= image_tag('/images/solaris-grey.png') %>
+					</div>
+					<div class="right">
+						<address>
+							Solaris Mobile Ltd<br /> 
+							Pembroke House<br />
+							30 Pembroke Street Upper<br />
+							Dublin 2<br />
+							Ireland
+						</address>
+						<p>
+							<strong>E:</strong> <a href="mailto:mail@solarismobile.com">mail@solarismobile.com</a><br />
+							<strong>T:</strong> +353 1237 4628
+						</p>
+					</div>
+				</div>
 			</div>
 			<div class="col">
 			</div>
 			<div class="col last">
-				<%= image_tag('/images/solaris-grey.png') %>
-				<address>
-					Solaris Mobile Ltd<br /> 
-					Pembroke House<br />
-					30 Pembroke Street Upper<br />
-					Dublin 2<br />
-					Ireland
-				</address>
+				<div class="flickr">
+					<h4>feed</h4>
+					<%- cache('flickr', :expires_in => 3.hours) do %>
+			 			<% Flickr.new(FLICKR_ID).stream.each do |image| %>
+			 				<%= link_to(image_tag(flickr_image_url(image, :size => "small"), :width => 55, :height => 55, :alt => image.title), flickr_image_url(image, :size => "original")) %>
+			 			<% end %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 </body>

@@ -20,6 +20,11 @@ body {
 	text-align: center;
 }
 
+strong
+{
+	font-weight:bold;
+}
+
 div#header
 {
 	background-image:url(../images/backgrounds/blue-white.jpg);
@@ -176,6 +181,9 @@ div#footer
 	background-position:top center;
 	background-repeat:repeat-x;
 	padding-top:20px;
+	color: #cccccc;
+	overflow:hidden;
+	margin-bottom:20px;
 }
 
 div.wrapper
@@ -378,3 +386,156 @@ p#user_nav
 	color:#00baf2;
 	float:right;
 }
+
+div.datebox_container
+{
+	float:left;
+}
+
+div.datebox
+{
+	float:left;
+	width:55px;
+	margin-right:20px;
+	margin-top:2px;
+}
+
+div.datebox span.day
+{
+	text-align:center;
+	display:block;
+	padding-top:1px;
+	font-size:3em;
+	font-weight:bold;
+	letter-spacing:-2px;
+	border:1px solid #cccccc;
+}
+
+div.datebox span.month
+{
+	display:block;
+	text-align:center;
+	padding-top:0px;
+	padding-bottom:2px;
+	background-color:#cccccc;
+	border:1px solid #cccccc;
+	color: #666666;
+}
+
+div#footer ul.newsitems li.odd
+{
+	border-top:0px;
+}
+
+div#footer ul.newsitems li.even
+{
+	border-bottom:0px;
+}
+
+div#footer ul.newsitems li
+{
+	overflow:hidden;
+	padding-bottom:10px;
+	padding-top:10px;
+	border-bottom:1px solid #4b4b4b;
+	border-top:1px solid #939393;
+}
+
+div#footer ul.newsitems li p
+{
+	font-size:1.1em;
+	line-height:1.5em;
+	padding-bottom:5px;
+	margin-left:75px;
+}
+
+div#footer ul.newsitems li h4
+{
+	padding-bottom:3px;
+	margin-left:75px;
+}
+
+div#footer ul.newsitems li a.more
+{
+	display:block;
+	margin-left:75px;
+}
+
+div#footer ul.newsitems li h4 a
+{
+	font-size:1.4em;
+	font-weight:bold;
+	color:#cccccc;
+	text-decoration:none;
+}
+
+div#footer a.more
+{
+	font-size:1.1em;
+}
+
+div#footer a
+{
+	color:#85c4d8;
+}
+
+div#footer a:hover
+{
+	color:#9fddf0;
+}
+
+div#footer div.flickr
+{
+	padding-top:10px;
+}
+
+div#footer div.flickr h4
+{
+	background-image:url(../images/flickr_small.png);
+	background-position:0px 2px;
+	background-repeat:no-repeat;
+	padding-left:42px;
+	font-size:1.4em;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+
+div#footer div.flickr a
+{
+	float: left;
+	width:55px;
+	height:55px;
+	display: block;
+	margin-right:3px;
+	margin-bottom:3px;
+	border:1px solid #cccccc;
+}
+
+div#footer div.flickr a:hover
+{
+	border:1px solid #9fddf0;
+}
+
+div#footer div.address
+{
+	margin-top:30px;
+	overflow:hidden;
+}
+
+div#footer div.address p
+{
+	margin-top:10px;
+}
+
+div#footer div.address div.left
+{
+	float:left;
+	width:150px;
+}
+
+div#footer div.address div.right
+{
+	float:left;
+	width:150px;
+}
+

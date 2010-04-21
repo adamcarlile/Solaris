@@ -6,3 +6,5 @@ RECAPTCHA_PUBLIC_KEY = 'your-key-here'
 RECAPTCHA_PRIVATE_KEY = 'your-key-here'
 ENV['RECAPTCHA_PUBLIC_KEY'] = 'your-key-here'
 ENV['RECAPTCHA_PRIVATE_KEY'] = 'your-key-here'
+
+FLICKR_ID = '25869562@N08'

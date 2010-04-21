@@ -17,6 +17,7 @@ class Public::BaseController < CMSController
     def render_page
       load_shared_pages
       set_page_types_ivars
+      get_footer_ivars
       set_meta_data
       add_page_breadcrumbs
       render_page_template
@@ -36,6 +37,14 @@ class Public::BaseController < CMSController
         
       params.update(@extra_params)
       @page
+    end
+    
+    def get_footer_ivars
+      footer_news
+    end
+    
+    def footer_news
+      @footer_news = NewsIndex.first.latest_stories(2)
     end
   
     # Set page title and metadata
