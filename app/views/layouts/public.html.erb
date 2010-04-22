@@ -2,7 +2,7 @@
 	<div id="body">
 		<div class="wrapper">
 			<div id="content">
-				<%= render_breadcrumb unless homepage? %>
+				<%= render_breadcrumb unless homepage? || @page == @root_page%>
 				<%= render_flash %>
 				<%= yield %>
 			</div>

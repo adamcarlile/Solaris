@@ -104,7 +104,7 @@ class Public::BaseController < CMSController
 
     def add_page_breadcrumbs
       return if homepage?
-      pages_for_crumbs = @page.ancestors.reverse
+      pages_for_crumbs = @page.ancestors
       pages_for_crumbs.shift
       unless pages_for_crumbs.empty?
         add_breadcrumb 'Home', homepage_url

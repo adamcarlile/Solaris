@@ -1,0 +1,5 @@
+<%= content_tag('p', @page.intro, :id => 'intro') unless @page.intro.empty? %>
+
+<%= @page.body %>
+
+<%= render_tag_list @page %>

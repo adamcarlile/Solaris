@@ -633,3 +633,34 @@ div#content, div#support
 {
 	margin-top: 160px;
 }
+
+div#content p
+{
+	font-size:12px;
+	line-height:18px;
+	color:#333333;
+	margin-bottom:5px;
+}
+
+div#content p#intro
+{
+	color:#005670;
+	font-weight:bold;
+}
+
+div#content p#breadcrumb
+{
+	font-size:10px;
+}
+
+ul#breadcrumb
+{
+	overflow:hidden;
+	margin-bottom:10px;
+}
+
+ul#breadcrumb li
+{
+	float:left;
+	margin-right:5px;
+}
