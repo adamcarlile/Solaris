@@ -12,6 +12,16 @@ h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 abbr,acronym,a {border:0;}
 :focus{outline: none;}
 
+a
+{
+	color:#005670;
+}
+
+a:hover
+{
+	color:#098fb8;
+}
+
 body {
 	font-size: 62.5%;
 	background-color:#666666;
@@ -210,6 +220,7 @@ div.wrapper
 .button:hover
 {
 	background-image:url(../images/buttons/button-standard_hover.png);
+	color:#ffffff;
 }
 
 .button:active
@@ -484,12 +495,12 @@ div#footer a:hover
 	color:#9fddf0;
 }
 
-div#footer div.flickr
+div#footer div.flickr, div#footer div.twitter
 {
 	padding-top:10px;
 }
 
-div#footer div.flickr h4
+div#footer div.flickr h4, div#footer div.twitter h4
 {
 	background-image:url(../images/flickr_small.png);
 	background-position:0px 2px;
@@ -516,6 +527,41 @@ div#footer div.flickr a:hover
 	border:1px solid #9fddf0;
 }
 
+div#footer div.twitter h4
+{
+	text-indent:-40000px;
+	background-image:url(../images/twitter_small.png);
+}
+
+div#footer div.twitter div.tweet
+{
+	padding:10px;
+	background-color:#cccccc;
+	color:#333333;
+	overflow:hidden;
+}
+
+div#footer div.twitter div.tweet img
+{
+	float:left;
+}
+
+div#footer div.twitter div.tweet p
+{
+	font-size:1.1em;
+	margin-left:65px;
+}
+
+div#footer div.twitter div.tweet p a
+{
+	color:#005670;
+}
+
+div#footer div.twitter div.tweet p a:hover
+{
+	color:#098fb8;
+}
+
 div#footer div.address
 {
 	margin-top:30px;
@@ -539,3 +585,51 @@ div#footer div.address div.right
 	width:150px;
 }
 
+div#content
+{
+	width:615px;
+	float:left;
+	margin-left:5px;
+}
+
+div#support
+{
+	float:left;
+	width:300px;
+	margin-left:20px;
+}
+
+div#branding div.banner
+{
+	position:absolute;
+	margin-top:-10px;
+	width:940px;
+	height:212px;
+	background-image:url(../images/backgrounds/header_bg.png);
+	background-repeat:no-repeat;
+}
+
+div#branding div.banner h1
+{
+	font-size:4em;
+	padding-right:10px;
+	padding-left:3px;
+	padding-bottom:3px;
+	color:#ffffff;
+	position:absolute;
+	bottom:15px;
+	left:15px;
+	text-shadow:1px 1px 0px #000000;
+	background-color:#343434;
+}
+
+div#branding div.banner img
+{
+	margin-top:15px;
+	margin-left:15px;
+}
+
+div#content, div#support
+{
+	margin-top: 160px;
+}

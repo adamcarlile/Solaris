@@ -9,7 +9,8 @@ class Banner < ActiveRecord::Base
      :styles => { 
        :thumb   => "80x80#", 
        :small   => "300x300",
-       :banner => "604x278#"
+       :banner => "604x278#",
+       :widebanner => "908x178#"
      }
    }
    

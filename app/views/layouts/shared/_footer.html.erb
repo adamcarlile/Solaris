@@ -31,16 +31,10 @@
 				</div>
 			</div>
 			<div class="col">
+				<%= render :partial => 'public/shared/footer/twitter'%>
 			</div>
 			<div class="col last">
-				<div class="flickr">
-					<h4>feed</h4>
-					<%- cache('flickr', :expires_in => 3.hours) do %>
-			 			<% Flickr.new(FLICKR_ID).stream.each do |image| %>
-			 				<%= link_to(image_tag(flickr_image_url(image, :size => "small"), :width => 55, :height => 55, :alt => image.title), flickr_image_url(image, :size => "original")) %>
-			 			<% end %>
-					<% end %>
-				</div>
+				<%= render :partial => 'public/shared/footer/flickr' %>
 			</div>
 		</div>
 </body>
