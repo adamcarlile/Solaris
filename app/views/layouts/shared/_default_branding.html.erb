@@ -1,8 +1,10 @@
 <div class="inner">
 	<div class="banner">
-		<h1><%= @page.title %></h1>
-		<% if @page.images.first %>
-			<%= image_tag(@page.images.first.image.url(:widebanner)) %>
+		<h1><%= if @page : @page.title else "Solaris Mobile" end %></h1>
+		<% if @page %>
+			<% if @page.images %>
+				<%= image_tag(@page.images.first.image.url(:widebanner)) %>
+			<% end %>
 		<% else %>
 			<%= image_tag Banner.all(:limit => 1, :order => 'RAND()').first.banner.url(:widebanner) %>
 		<% end %>

@@ -2,6 +2,7 @@ class Public::BaseController < CMSController
 
   layout :set_layout
   helper :cms_engine,:navigation,:easy_forms
+  before_filter :get_footer_ivars
 
   protected
   
@@ -17,7 +18,6 @@ class Public::BaseController < CMSController
     def render_page
       load_shared_pages
       set_page_types_ivars
-      get_footer_ivars
       set_meta_data
       add_page_breadcrumbs
       render_page_template
