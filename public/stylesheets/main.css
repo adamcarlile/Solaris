@@ -595,7 +595,7 @@ div#content
 div#support
 {
 	float:left;
-	width:300px;
+	width:294px;
 	margin-left:20px;
 }
 
@@ -664,3 +664,97 @@ ul#breadcrumb li
 	float:left;
 	margin-right:5px;
 }
+
+div#content img
+{
+	float:left;
+	border:1px solid #f1f1f1;
+	padding:5px;
+	margin-right:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+div#support div.grey
+{
+	background-color:#f1f1f1;
+}
+
+div#support div.panel
+{
+	border:1px solid #cccccc;
+}
+
+div#support div#subnav 
+{
+}
+
+div#support div#subnav ul li a
+{
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+div#support div#subnav ul li.current
+{
+	background-image:url(../images/backgrounds/blue-darkblue-small.jpg);
+	background-position:bottom;
+	background-color:#00baf2;
+}
+
+div#support div#subnav ul li.current a
+{
+	color:#ffffff;
+	text-shadow:0px -1px 0px #000000;
+}
+
+div#support div#subnav ul li
+{
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:5px;
+	padding-top:5px;
+	border-bottom:1px solid #d9d9d9;
+	border-top:1px solid #ffffff;
+}
+
+div#support div#subnav ul li:first-child
+{
+	border-top:none;
+}
+
+div#support div#subnav ul li.last
+{
+	border-bottom:none;
+}
+
+div#support div#subnav ul li a span
+{
+	display:block;
+	font-size:10px;
+	font-weight:normal;
+}
+
+ul.tags
+{
+	overflow: hidden;
+	padding:20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:35px;
+	clear:both;
+	background-color:#f1f1f1;
+	background-image:url(../images/tags-label.png);
+	background-position: 10px 10px;
+	background-repeat:no-repeat;
+	border:1px solid #cccccc;
+	margin-top:20px;
+}
+
+ul.tags li
+{
+	float: left;
+	margin-right:10px;
+}
+

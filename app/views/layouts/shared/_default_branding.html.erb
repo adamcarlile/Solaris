@@ -2,8 +2,10 @@
 	<div class="banner">
 		<h1><%= if @page : @page.title else "Solaris Mobile" end %></h1>
 		<% if @page %>
-			<% if @page.images %>
-				<%= image_tag(@page.images.first.image.url(:widebanner)) %>
+			<% if !@page.images.empty? %>
+				<%= image_tag(@page.images.first.file.url(:widebanner)) %>
+			<% else %>
+				<%= image_tag Banner.all(:limit => 1, :order => 'RAND()').first.banner.url(:widebanner) %>
 			<% end %>
 		<% else %>
 			<%= image_tag Banner.all(:limit => 1, :order => 'RAND()').first.banner.url(:widebanner) %>

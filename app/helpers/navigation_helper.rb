@@ -13,4 +13,9 @@ module NavigationHelper
 	  content_tag('ul', elements.join, :id => 'breadcrumb')
   end
   
+  def link_to_page(page, prefix = '')
+    content = page.nav_title + content_tag('span', page.subtitle)
+    link_to(prefix + content, url_for_page(page))
+  end
+  
 end

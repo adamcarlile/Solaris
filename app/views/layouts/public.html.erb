@@ -7,7 +7,7 @@
 				<%= yield %>
 			</div>
 			<div id="support">
-				<%= yield :sidebar %>
+				<%= yield(:support) || render(:partial => 'layouts/shared/default_support') %>
 			</div>
 		</div>
 	</div>

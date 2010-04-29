@@ -1,11 +1,17 @@
 <div class="twitter">
 	<h4>Twitter Feed</h4>
 	<%- cache('twitter', :expires_in => 3.hours) do %>
+		<% begin %>
 		<div class="tweet">
 		<%- Twitter.new(TWITTER_USER, TWITTER_PASSWORD).timeline(:user, :query => {:count => '1'}).each do |tweet| %>
 			<%= image_tag(tweet['user']['profile_image_url'], :height => 55) %>
 			<p><%= link_twitter_user tweet['text'] %></p>
 		<%- end %>
+		<% rescue %>
+		<div class="tweet">
+			<p>Looks like we cant connect to twitter right now</p>
+		</div>
+		<% end %>
 		</div>
 	<%- end %>
 </div>
