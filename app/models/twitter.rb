@@ -1,5 +1,5 @@
+include HTTParty
 class Twitter
-  include HTTParty
   
   base_uri 'api.twitter.com'
 
