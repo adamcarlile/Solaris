@@ -4,6 +4,7 @@ class Image < ActiveRecord::Base
     :url =>                   "/upload/:rails_env/images/:id/:style_:basename.:extension",
     :path => ":rails_root/public/upload/:rails_env/images/:id/:style_:basename.:extension",
     :styles => { 
+      :profile_thumb => "140x167#",
       :thumb   => "80x80#", 
       :small   => ">100x100#",
       :medium  => "140x140>",

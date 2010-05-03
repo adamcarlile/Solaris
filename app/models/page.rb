@@ -189,7 +189,7 @@ class Page < ActiveRecord::Base
   self.can_have_children   = true
   self.visitable           = true
   self.can_have_comments   = false
-  self.allowed_child_types = [:basic_page,:folder,:news_index,:hyperlink,:redirect, :faq_index]
+  self.allowed_child_types = [:basic_page,:folder,:news_index,:hyperlink,:redirect, :faq_index, :profile_index]
   self.archive             = false
   self.show_in_nav         = true
   self.extra_path_params   = []

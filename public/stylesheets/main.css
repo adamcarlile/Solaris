@@ -27,7 +27,6 @@ body {
 	background-color:#666666;
 	color: #111111;
 	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-align: center;
 }
 
 strong
@@ -668,11 +667,33 @@ ul#breadcrumb li
 div#content img
 {
 	float:left;
-	border:1px solid #f1f1f1;
+	border:1px solid #cccccc;
 	padding:5px;
 	margin-right:10px;
 	margin-top:10px;
 	margin-bottom:10px;
+}
+
+div#content h2
+{
+	color:#01b7ee;
+	font-weight:bold;
+	font-size:2.2em;
+}
+
+div#content h3
+{
+	color:#005670;
+	font-weight:bold;
+	font-size:1.8em;
+}
+
+div#content h4
+{
+	color: #005670;
+	font-size: 1.4em;
+	font-style: italic;
+	font-weight:bold;
 }
 
 div#support div.grey
@@ -758,3 +779,59 @@ ul.tags li
 	margin-right:10px;
 }
 
+div#content ul#profile
+{
+	overflow: hidden;
+}
+
+div#content ul#profile li
+{
+	width:210px;
+	padding:5px;
+	margin-bottom:10px;
+	float: right;
+	border:1px solid #cccccc;
+	background-color:#F1F1F1;
+}
+
+div#content ul#profile li.first
+{
+	float: left;
+	padding:0px;
+	width: 380px;
+	margin-right:12px;
+	border: none;
+	background-color: transparent;
+}
+
+div#content ul#profile li.first img
+{
+	margin-top:0px;
+}
+
+div#content ul#profile p.subtitle
+{
+	color:#666666;
+	font-style:italic;
+}
+
+div#content ul#profile li.other img
+{
+	padding:0px;
+	margin:-5px;
+	margin-right:10px;
+	border:0px;
+}
+
+div#content ul#profile li.other h3
+{
+	font-size:1.4em;
+	margin-bottom:5px;
+}
+
+div#content ul#profile li.other p.subtitle
+{
+	font-size:10px;
+	line-height:12px;
+	margin-bottom:0px;
+}

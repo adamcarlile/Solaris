@@ -4,3 +4,7 @@ log/production.log
 log/server.log
 log/test.log
 public/upload
+public/javascripts/all_admin.js
+public/stylesheets/admin.css
+upload/development/file_versions/1/About_Stacks.pdf
+upload/development/files/1/About_Stacks.pdf

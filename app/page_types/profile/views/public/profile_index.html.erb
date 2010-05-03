@@ -1,0 +1,29 @@
+<%= content_tag('p', @page.intro, :id => 'intro') unless @page.intro %>
+
+<%= @page.body %>
+
+<ul id="profile">
+<% @profiles.each_with_index do |profile, i| %>
+	<% if i == 0 %>
+	<li class="first">
+		<%= image_tag(profile.images.first.file.url(:profile_thumb)) unless profile.images.empty? %>
+		<h3><%= profile.title %></h3>
+		<p class="subtitle"><%= profile.subtitle %></p>
+		<p><%= profile.intro %><p>
+			 <%= profile.body %>
+		<% unless profile.file_uploads.empty? %>
+			<%= link_to("Download #{profile.title}'s full bio", profile.file_uploads.first.permenant_url, :class => "pdf")%>
+		<% end %>
+	</li>
+	<% end %>
+	<% if i != 0 %>
+	<li class="other">
+		<%= image_tag(profile.images.first.file.url(:small), :height => 60) unless profile.images.empty? %>
+		<h3><%= profile.title %></h3>
+		<p class="subtitle"><%= profile.subtitle %></p>
+	</li>
+	<% end %>
+<% end %>
+</div>
+
+<%= render_tag_list @page %>
