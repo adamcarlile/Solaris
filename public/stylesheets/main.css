@@ -789,16 +789,15 @@ div#content ul#profile li
 	width:210px;
 	padding:5px;
 	margin-bottom:10px;
-	float: right;
 	border:1px solid #cccccc;
 	background-color:#F1F1F1;
 }
 
 div#content ul#profile li.first
 {
-	float: left;
 	padding:0px;
 	width: 380px;
+	float: left;
 	margin-right:12px;
 	border: none;
 	background-color: transparent;
@@ -813,6 +812,12 @@ div#content ul#profile p.subtitle
 {
 	color:#666666;
 	font-style:italic;
+}
+
+div#content ul#profile li.other
+{
+	margin-left:390px;
+	overflow:hidden;
 }
 
 div#content ul#profile li.other img
