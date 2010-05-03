@@ -1,4 +1,4 @@
-<%= content_tag('p', @page.intro, :id => 'intro') unless @page.intro %>
+<%= content_tag('p', @page.intro, :id => 'intro') unless @page.intro.empty? %>
 
 <%= @page.body %>
 
