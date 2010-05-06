@@ -1,4 +1,9 @@
 <%- content_for :support do -%>
+<% if @page %>
+<div id="subnav" class="panel grey">
+	<%= render_list_nav @root_page %>
+</div>
+<% end %>
 <div id="subnav" class="panel grey">
   <ul class="nav">
     <% for month in NewsIndex.archive_months -%>
