@@ -21,7 +21,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   eval(File.read("#{RAILS_ROOT}/vendor/plugins/cms-engine/config/environment.rb"))
   
-  #config.gem "flickraw"
+  config.gem "flickraw"
   config.gem "httparty"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
