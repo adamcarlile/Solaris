@@ -1,0 +1,40 @@
+<%- content_for :support do -%>
+<div id="subnav" class="panel grey">
+  <ul class="nav">
+    <% for month in NewsIndex.archive_months -%>
+    <li><%= link_to "#{Date::MONTHNAMES[month[:month]]} #{month[:year]}", url_for_page(@page, month) %></li>
+    <% end -%>
+  </ul>
+</div>
+<%- end -%>
+
+<%= render 'public/shared/page_body' %>
+
+<% for news_item in @news_items %>
+<% if news_item.is_a? EventItem %>
+<div class="divider date">
+	<div class="morebox">
+		<%= datebox(news_item.event_date) %>
+	</div>
+	<h2><%= link_to "#{news_item.title}", url_for_page(news_item) %></h2>
+	<div class="divider_inner">
+		<p><%= news_item.intro %> <%= link_to 'Read More', url_for_page(news_item), :title => "Read the rest of the article '#{news_item.title}'"%></p>
+	</div>
+		<%= render_tag_list news_item %>
+</div>
+<% else %>
+<div class="divider news_item">
+	<div class="morebox">
+		<%= datebox(news_item.publish_from) %>
+	</div>
+	<h2><%= link_to "#{news_item.title}", url_for_page(news_item) %></h2>
+	<div class="divider_inner">
+		<p><%= news_item.intro %></p>
+		<%= link_to 'Read More', url_for_page(news_item), :title => "Read the rest of the article '#{news_item.title}'"%>
+	</div>
+		<%= render_tag_list news_item %>
+</div>
+<% end %>
+<% end %>
+
+<%= will_paginate @news_items, :renderer => CmsEngine::LinkRenderer %>

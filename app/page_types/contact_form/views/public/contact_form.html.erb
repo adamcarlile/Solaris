@@ -1,0 +1,24 @@
+<% content_for :sidebar do %>
+  <h2><%= @root_page %></h2>
+  <%= render_list_nav @root_page %>
+<% end %>
+
+  <%= render 'public/shared/page_body' %>
+
+<% form_for :enquiry, @enquiry, :url => enquiries_url, :html => {:id => 'enquiry_form'} do |f| %>
+  <%= hidden_field_tag :slug_path, @page.slug_path %>
+  <%= f.field :name, :label => 'Name', :prompt => "What's your name?" %>
+  <%= f.field :email, :label => 'Email', :prompt => "So we can get in touch" %>
+  <%= f.field :telephone, :label => 'Telephone', :prompt => "Or we can call you" %>
+  
+  <%= f.field :message, :prompt => "Put your message in here, we will never share your email address with anyone else, we don't like spam either", 
+  :helper => :text_area, 
+  :helper_options => {:rows => 8},
+  :label => 'Message'
+  %>
+
+	<div class="formElm">
+  	<input type="submit" id="submitbutton" class="button" value="Send message" />
+	</div>
+
+<% end %>

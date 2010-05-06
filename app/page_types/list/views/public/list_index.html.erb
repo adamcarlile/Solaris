@@ -1,0 +1,10 @@
+<ul id="list">
+<% @items.each do |item| %>
+	<li <%= cycle('','class="last"')%>>
+		<%= image_tag(item.images.first.permenant_url(:medium), :width => 100) %>
+		<h2><%= link_to(item.title, url_for_page(item)) %></h2>
+		<p><%= textilize(item.intro) unless item.intro.empty? %></p>
+		<%= link_to('Read More', item.subtitle, :class => 'button') unless item.subtitle.empty? %>
+	</li>
+<% end %>
+</ul>

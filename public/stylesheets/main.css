@@ -360,13 +360,14 @@ div#userpanel form#search_form input
 	font-family:Helvetica, Arial, sans-serif;
 }
 
-div#userpanel form#search_form input.button
+input.button
 {
 	display:block;
 	float:left;
 	padding:0px;
 	border:0px;
 	background-color: transparent;
+	font-family:Helvetica, Arial, sans-serif;
 	background-image: url(../images/buttons/button-standard.png);
 }
 
@@ -378,6 +379,11 @@ div#userpanel form#search_form input.button:hover
 div#userpanel form#search_form input.button:active
 {
 	background-image:url(../images/buttons/button-standard_click.png);
+}
+
+div#userpanel form#search_form
+{
+	margin-top:0px;
 }
 
 div#userpanel form#search_form input#q
@@ -636,9 +642,9 @@ div#content, div#support
 div#content p
 {
 	font-size:12px;
-	line-height:18px;
+	line-height:20px;
 	color:#333333;
-	margin-bottom:5px;
+	margin-bottom:10px;
 }
 
 div#content p#intro
@@ -839,4 +845,217 @@ div#content ul#profile li.other p.subtitle
 	font-size:10px;
 	line-height:12px;
 	margin-bottom:0px;
+}
+
+div#content div.divider
+{
+	padding-bottom:15px;
+	padding-top:15px;
+	border-bottom:1px solid #f1f1f1;
+}
+
+div#content div.divider h2
+{
+	font-size:1.6em;
+	margin-bottom:5px;
+}
+
+div#content div.divider h2 a
+{
+	text-decoration:none;
+}
+
+div#content div.date
+{
+}
+
+div#content div.morebox
+{
+	float:left;
+	overflow:hidden;
+	padding-right:15px;
+}
+
+div#content div.morebox div.datebox
+{
+	float:none;
+	margin:0px;
+}
+
+div#content div.morebox div.datebox span.day
+{
+	background-color:#ffffff;
+	color:#005670;
+	border-color:#005670;
+}
+
+div#content div.morebox div.datebox span.month
+{
+	color:#ffffff;
+	background-color:#005670;
+	border-color:#005670;	
+}
+
+div#content div.morebox a.button
+{
+	float:none;
+	clear:both;
+}
+
+div#content div.divider_inner
+{
+	margin-top:2px;
+	margin-left:70px;
+}
+
+div#content div.divider ul.tags
+{
+	margin-top:0px;
+	padding:5px;
+	padding-left:25px;
+	border-width:0px;
+	background-color:transparent;
+	background-position:0px 5px;
+	font-size:1.1em;
+	margin-left:70px;
+}
+
+div#content div.divider_inner em
+{
+	font-size:1.2em;
+	color:#666666;
+	display:block;
+	font-family: Georgia;
+	padding:5px;
+}
+
+form
+{
+	margin-top:20px;
+}
+
+form div.formElm div.label
+{
+	float:left;
+	width:150px;
+	padding-right:20px;
+}
+
+form div.formElm div.label label
+{
+	text-align:right;
+	display:block;
+	font-size:1.2em;
+	font-weight:bold;
+}
+
+form div.formElm div.label span
+{
+	text-align:right;
+	display:block;
+	font-style:italic;
+	color:#666666;
+	padding-top:2px;
+}
+
+form div.formElm br
+{
+	display:none;
+}
+
+form div.formElm
+{
+	padding-top:5px;
+	padding-bottom:5px;
+	overflow:hidden;
+}
+
+form input.text_field, form textarea
+{
+	float:left;
+	width:300px;
+	border:1px solid #cccccc;
+	font-size:1.4em;
+	padding:7px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-family:Helvetica, Arial, sans-serif;
+}
+
+form div.withError input.text_field
+{
+	border:1px solid #ba0000;
+}
+
+form div.withError span.formError
+{
+	display:block;
+	clear:both;
+	margin-left:170px;
+	padding-top:5px;
+	text-transform:capitalize;
+	color:#ba0000;
+}
+
+form input.text_field:focus, form textarea:focus
+{
+	-moz-box-shadow: 0px 0px 5px #00b9f1;
+	-webkit-box-shadow: 0px 0px 5px #00b9f1;
+}
+
+form div.withError input.text_field:focus, form div.withError textarea:focus
+{
+	-moz-box-shadow: 0px 0px 5px #ba0000;
+	-webkit-box-shadow: 0px 0px 5px #ba0000;	
+}
+
+form div.formElm input.button
+{
+	margin-left:168px;
+}
+
+form textarea
+{
+	width:424px;
+}
+
+ul#list
+{
+	overflow:hidden;
+	margin-top:20px;
+}
+
+ul#list li
+{
+	overflow:hidden;
+	width:294px;
+	float:left;
+	margin-right:20px;
+}
+
+div#content ul#list li img
+{
+	margin-top:0px;
+	margin-bottom:0px;
+	border:0px;
+	background-color:#f1f1f1;
+}
+
+ul#list li.last
+{
+	margin-right:0px;
+}
+
+ul#list li h2
+{
+	font-size:1.8em;
+	background-color:#f1f1f1;
+	padding:5px;
+	padding-left:0px;
+}
+
+ul#list li h2 a
+{
+	text-decoration:none;
 }

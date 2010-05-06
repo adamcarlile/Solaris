@@ -136,6 +136,14 @@ module CmsEngineHelper
     output += %(</div>)
   end
   
+  def date_year_box(date)
+    output = %(<div class="datebox">\n)
+    output += content_tag('span', date.strftime("%d"), :class => "day")
+    output += content_tag('span', date.strftime("%B"), :class => "month")
+    output += content_tag('span', date.strftime("%Y"), :class => "year")
+    output += %(</div>)
+  end
+  
   def flickr_image_url(object, options = {})
     options = {:size => "original"}.update(options)
     suffix = case options[:size]
