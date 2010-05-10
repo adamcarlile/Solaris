@@ -1,0 +1,12 @@
+<% if @page %>
+<div id="subnav" class="panel grey">
+	<%= render_list_nav @root_page %>
+</div>
+<% end %>
+<div id="subnav" class="panel grey">
+  <ul class="nav">
+    <% for month in NewsIndex.archive_months -%>
+    <li><%= link_to "#{Date::MONTHNAMES[month[:month]]} #{month[:year]}", url_for_page(@page, month) %></li>
+    <% end -%>
+  </ul>
+</div>

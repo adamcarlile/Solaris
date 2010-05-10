@@ -1,5 +1,5 @@
 class Flickr
-  
+    
   def initialize(flickr_id)
     @flickr_id = flickr_id
     @stream = set_stream

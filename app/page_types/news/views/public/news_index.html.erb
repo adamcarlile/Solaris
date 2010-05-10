@@ -1,16 +1,5 @@
 <%- content_for :support do -%>
-<% if @page %>
-<div id="subnav" class="panel grey">
-	<%= render_list_nav @root_page %>
-</div>
-<% end %>
-<div id="subnav" class="panel grey">
-  <ul class="nav">
-    <% for month in NewsIndex.archive_months -%>
-    <li><%= link_to "#{Date::MONTHNAMES[month[:month]]} #{month[:year]}", url_for_page(@page, month) %></li>
-    <% end -%>
-  </ul>
-</div>
+	<%= render :partial => 'public/shared/news_support' %>
 <%- end -%>
 
 <%= render 'public/shared/page_body' %>
@@ -19,18 +8,23 @@
 <% if news_item.is_a? EventItem %>
 <div class="divider date">
 	<div class="morebox">
-		<%= datebox(news_item.event_date) %>
+		<%= date_year_box(news_item.event_date) %>
+		<em>Event</em>
 	</div>
 	<h2><%= link_to "#{news_item.title}", url_for_page(news_item) %></h2>
 	<div class="divider_inner">
-		<p><%= news_item.intro %> <%= link_to 'Read More', url_for_page(news_item), :title => "Read the rest of the article '#{news_item.title}'"%></p>
+		<p><%= truncate(news_item.intro, :length => 150) %> <%= link_to 'Read More', url_for_page(news_item), :title => "Read the rest of the article '#{news_item.title}'"%></p>
 	</div>
 		<%= render_tag_list news_item %>
 </div>
 <% else %>
 <div class="divider news_item">
 	<div class="morebox">
-		<%= datebox(news_item.publish_from) %>
+		<ul id="infolist">
+			<li class="user"><%= news_item.created_by.name %></li>
+			<li class="publish"><%= format_date news_item.publish_from %></li>
+		</ul>
+		<em><% if news_item.is_a? NewsItem %>News<% else %>Press Release<% end %></em>
 	</div>
 	<h2><%= link_to "#{news_item.title}", url_for_page(news_item) %></h2>
 	<div class="divider_inner">

@@ -235,6 +235,14 @@ div.col
 	margin-right:20px;
 }
 
+div.col-two
+{
+	width:600px;
+	min-height:1px;
+	float:left;
+	margin-right:20px;
+}
+
 div.last
 {
 	margin-right:0px;
@@ -408,7 +416,7 @@ div.datebox_container
 	float:left;
 }
 
-div.datebox
+div#footer div.datebox
 {
 	float:left;
 	width:55px;
@@ -416,7 +424,7 @@ div.datebox
 	margin-top:2px;
 }
 
-div.datebox span.day
+div#footer div.datebox span.day
 {
 	text-align:center;
 	display:block;
@@ -427,7 +435,7 @@ div.datebox span.day
 	border:1px solid #cccccc;
 }
 
-div.datebox span.month
+div#footer div.datebox span.month
 {
 	display:block;
 	text-align:center;
@@ -502,7 +510,6 @@ div#footer a:hover
 
 div#footer div.flickr, div#footer div.twitter
 {
-	padding-top:10px;
 }
 
 div#footer div.flickr h4, div#footer div.twitter h4
@@ -538,11 +545,22 @@ div#footer div.twitter h4
 	background-image:url(../images/twitter_small.png);
 }
 
+div#footer div.flickr
+{
+	padding:10px;
+	overflow:hidden;
+}
+
+div#footer div.flickr p
+{
+	font-size:1.1em;
+	margin-left:65px;	
+}
+
 div#footer div.twitter div.tweet
 {
 	padding:10px;
-	background-color:#cccccc;
-	color:#333333;
+	color:#cccccc;
 	overflow:hidden;
 }
 
@@ -571,6 +589,7 @@ div#footer div.address
 {
 	margin-top:30px;
 	overflow:hidden;
+	float:right;
 }
 
 div#footer div.address p
@@ -653,21 +672,22 @@ div#content p#intro
 	font-weight:bold;
 }
 
-div#content p#breadcrumb
+div#content ul#breadcrumb
 {
-	font-size:10px;
-}
-
-ul#breadcrumb
-{
+	margin:0px;
+	padding:0px;
 	overflow:hidden;
 	margin-bottom:10px;
 }
 
-ul#breadcrumb li
+div#content ul#breadcrumb li
 {
+	margin:0px;
+	padding:0px;
 	float:left;
 	margin-right:5px;
+	background-image:none;
+	font-size:10px !important;
 }
 
 div#content img
@@ -793,6 +813,9 @@ div#content ul#profile
 
 div#content ul#profile li
 {
+	margin:0px;
+	padding:0px;
+	background-image:none;
 	width:210px;
 	padding:5px;
 	margin-bottom:10px;
@@ -877,36 +900,10 @@ div#content div.morebox
 	padding-right:15px;
 }
 
-div#content div.morebox div.datebox
-{
-	float:none;
-	margin:0px;
-}
-
-div#content div.morebox div.datebox span.day
-{
-	background-color:#ffffff;
-	color:#005670;
-	border-color:#005670;
-}
-
-div#content div.morebox div.datebox span.month
-{
-	color:#ffffff;
-	background-color:#005670;
-	border-color:#005670;	
-}
-
-div#content div.morebox a.button
-{
-	float:none;
-	clear:both;
-}
-
 div#content div.divider_inner
 {
 	margin-top:2px;
-	margin-left:70px;
+	margin-left:135px;
 }
 
 div#content div.divider ul.tags
@@ -1021,18 +1018,20 @@ form textarea
 	width:424px;
 }
 
-ul#list
+div#content ul#list
 {
 	overflow:hidden;
 	margin-top:20px;
 }
 
-ul#list li
+div#content ul#list li
 {
 	overflow:hidden;
 	width:294px;
 	float:left;
 	margin-right:20px;
+	background-image:none;
+	padding:0px;
 }
 
 div#content ul#list li img
@@ -1043,12 +1042,12 @@ div#content ul#list li img
 	background-color:#f1f1f1;
 }
 
-ul#list li.last
+div#content ul#list li.last
 {
 	margin-right:0px;
 }
 
-ul#list li h2
+div#content ul#list li h2
 {
 	font-size:1.8em;
 	background-color:#f1f1f1;
@@ -1056,7 +1055,262 @@ ul#list li h2
 	padding-left:0px;
 }
 
-ul#list li h2 a
+div#content ul#list li h2 a
 {
 	text-decoration:none;
+}
+
+div#content ul
+{
+	margin-bottom:15px;
+}
+
+div#content ul li
+{
+	font-size:12px;
+	padding-left:20px;
+	padding-top:5px;
+	padding-bottom:5px;
+	color:#333333;
+	background-image:url(../images/icons/bullet_blue.gif);
+	background-position: 0px 7px;
+	background-repeat:no-repeat;
+	line-height:20px;
+	margin-left:10px;
+}
+
+div#content > h3, div#content > h2, div#content > h4
+{
+	margin-top:20px;
+	margin-bottom:5px;
+}
+
+div#content div#attachments
+{
+	background-color:#EAEAEA;
+}
+
+div#content div#attachments ul
+{
+	overflow:hidden;
+	padding:15px;
+	padding-bottom:0px;
+}
+
+div#content div#attachments ul li
+{
+	background-image:none;
+	padding:0px;
+	margin:0px;
+	float:left;
+	width:120px;
+	padding-bottom:15px;
+	padding-left:25px;
+	background-position:0px 5px;
+}
+
+div#content div#attachments ul li.english
+{
+	background-image:url(../images/icons/flags/gb.png);
+}
+
+div#content div#attachments ul li.french
+{
+	background-image:url(../images/icons/flags/fr.png);
+}
+
+div#content div#attachments ul li.german
+{
+	background-image:url(../images/icons/flags/de.png);
+}
+
+div#content div#attachments ul li.italian
+{
+	background-image:url(../images/icons/flags/it.png);
+}
+
+div#content div#attachments ul li.spanish
+{
+	background-image:url(../images/icons/flags/es.png);
+}
+
+div#content div#attachments h3
+{
+	background-image:url("../images/backgrounds/blue-darkblue-small.jpg");
+	background-position:center bottom;
+	background-repeat:repeat-x;
+	color:#FFFFFF;
+	font-size:1.8em;
+	font-weight:normal;
+	letter-spacing:0px;
+	padding:7px;
+	text-shadow:1px 1px 0 #000000;
+}
+
+div#content div#notes ul
+{
+	
+}
+
+div#content div#notes ul li
+{
+	background-position:0px 4px;
+}
+
+div#content div#notes h3
+{
+	color:#91cadb;
+	font-size:16px;
+	margin-bottom:5px;
+}
+
+div#content div#notes p, div#content div#notes ul li
+{
+	font-size:10px;
+	line-height:14px;
+	color:#898989;
+}
+
+div#content div.morebox
+{
+	margin-top:-4px;
+}
+
+div#content div.morebox div.datebox
+{
+	color:#666666;
+	overflow:hidden;
+	position:relative;
+	width:120px;
+	height:50px;
+}
+
+div#content div.morebox div.datebox span.day
+{
+	position:absolute;
+	display:block;
+	font-size:4em;
+	letter-spacing:-2px;
+	width:60px;
+	text-align:center;
+	font-weight:bold;
+}
+
+div#content div.morebox div.datebox span.month
+{
+	font-size:1.1em;
+	position:absolute;
+	right:5px;
+	width:55px;
+	top:10px;
+}
+
+div#content div.morebox div.datebox span.year
+{
+	position:absolute;
+	font-size:1.1em;
+	width:55px;
+	bottom:10px;
+	right:5px;
+}
+
+div#content div.morebox em
+{
+	display:block;
+	margin-top:-5px;
+	padding-left:15px;
+	font-size:1.1em;
+	color:#666666;
+}
+
+div#content div.date
+{
+	background-color:#ebfaff;
+}
+
+div#content div.date p
+{
+	margin-bottom:0px;
+	padding-bottom:0px;
+}
+
+div#content ul#infolist
+{
+	width:120px;
+}
+
+div#content ul#infolist li
+{
+	margin:0px;
+	padding:0px;
+	padding-left:20px;
+	padding-top:5px;
+	background-image:none;
+	color:#666666;
+}
+
+div#content ul#infolist li.user
+{
+	background-image:url(../images/icons/user.gif);
+}
+
+div#content ul#infolist li.publish
+{
+	background-image:url(../images/icons/date.gif);
+}
+
+div#content h1
+{
+	font-size:2.4em;
+	color:#005670;
+	font-weight:bold;
+	letter-spacing:-1px;
+	margin-bottom:15px;
+}
+
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	height: 32px; /*--Set height of tabs--*/
+	width: 100%;
+	margin-bottom:0px;
+}
+ul.tabs li {
+	float: right;
+	margin: 0;
+	padding: 0;
+	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+	line-height: 31px; /*--Vertically aligns the text within the tab--*/
+	overflow: hidden;
+	position: relative;
+	border:1px solid #cccccc;
+	background-color:#666666;
+	margin-left:10px;
+}
+ul.tabs li a {
+	text-decoration: none;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	outline: none;
+}
+
+ul.tabs li a img
+{
+	padding-top:10px;
+}
+
+ul.tabs li a:hover {
+	background: #666666;
+}
+html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+	background-color:#666666;
+	border-bottom-color:#666666;
+}
+
+div.tab_container
+{
+	border:1px solid #cccccc;
+	margin-left:250px;
 }

@@ -35,10 +35,30 @@
 	    <%= date_select :page, :publish_to, :order => [:day,:month,:year], :start_year => (Date.today.year - 5), :include_blank => true %>
 	  </td>
 		<td>
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
 			<%= label :page, :event_date %><br />
 			<%= datetime_select :page, :event_date, :order => [:day,:month,:year], :default => Time.now, :start_year => Date.today.year, :minute_step => 15 %>
 		</td>
-	</tr></table>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= label :page, :event_end_date %><br />
+			<%= datetime_select :page, :event_end_date, :order => [:day,:month,:year], :default => Time.now, :start_year => Date.today.year, :minute_step => 15 %>
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	</table>
 
 	<%= render('comment_settings_fields', :f => f) if current_user.has_role?(:editor) and @page.can_have_comments? %>
 

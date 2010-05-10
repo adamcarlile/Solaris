@@ -23,8 +23,29 @@
 
 <%= content_tag('p', @page.intro, :id => 'intro') unless @page.intro.empty? %>
 
+<%= link_to(image_tag(@page.images.first.file.url(:large)), @page.images.first.file.url, :class => "lightbox") unless @page.images.empty? %>
 <%= @page.body %>
 
 <%= render 'public/comments/comments_ui' %>
 
-<p id="back"><%= link_to " &laquo; back to news index", url_for_page(@page.parent) %></p>
+<% unless @page.press_info.empty? %>
+<div id="notes">
+	<h3>Notes to Editors</h3>
+	<%= @page.press_info %>
+</div>
+<% end %>
+
+<% if @page.attachments %>
+<div id="attachments">
+	<h3>Download press release</h3>
+	<% unless object.file_uploads.empty? %>
+		<ul class="files">
+		<% object.file_uploads.each do |file| %>
+			<li class="<%= file.tags.first %>"><%= link_to file.tags.first.to_s.capitalize, file.permenant_url %></li>
+		<% end %>
+		</ul>
+	<% end %>
+</div>
+<% end %>
+
+<p id="back"><%= link_to " &laquo; Back to news index", url_for_page(@page.parent) %></p>

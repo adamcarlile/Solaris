@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100503222622) do
+ActiveRecord::Schema.define(:version => 20100509213725) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -204,6 +204,8 @@ ActiveRecord::Schema.define(:version => 20100503222622) do
     t.boolean  "children_restricted", :default => false
     t.string   "subtitle"
     t.datetime "event_date"
+    t.text     "press_info"
+    t.datetime "event_end_date"
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"

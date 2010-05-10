@@ -318,7 +318,7 @@ class Page < ActiveRecord::Base
     if parent.nil?
       self.slug_path = nil
     else
-      self.slug_path = (ancestors.map(&:slug).reject{|a|a.blank?}.reverse << slug).join('/')
+      self.slug_path = (ancestors.map(&:slug).reject{|a|a.blank?} << slug).join('/')
     end
     #self.title_path = (ancestors.map(&:title).reject{|a|a.blank?}.reverse << title).join(' &gt; ')
   end
