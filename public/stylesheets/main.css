@@ -1314,3 +1314,68 @@ div.tab_container
 	border:1px solid #cccccc;
 	margin-left:250px;
 }
+
+div#gallery ul
+{
+	
+}
+
+div#content div#downloads
+{
+	
+}
+
+div#content div#downloads ul li
+{
+	background-image:none;
+	padding:0px;
+	margin:0px;
+	overflow:hidden;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+div#content div#downloads ul li img
+{
+	border:none;
+	padding:0px;
+	margin:0px;
+}
+
+div#content div#downloads ul li a
+{
+	padding-left:20px;
+}
+
+div#content div#gallery ul li
+{
+	padding:0px;
+	margin:0px;
+	background-image:none;
+	float:left;
+	margin:5px;
+}
+
+div#content div#gallery ul li img
+{
+	margin:0px;
+}
+
+div#content div#gallery ul li a:hover img
+{
+	border-color:#00baf2;
+}
+
+div#footer div.buttons
+{
+	overflow:hidden;
+	margin-top:20px;
+}
+
+div#footer div.buttons a
+{
+	float:right;
+	margin:5px;
+	margin-right:0px;
+	margin-left:10px;
+}

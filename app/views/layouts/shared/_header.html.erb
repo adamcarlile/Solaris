@@ -9,6 +9,7 @@
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <!-- CSS -->
 <%= stylesheet_link_tag '/stylesheets/main.css' %>
+<%= stylesheet_link_tag '/stylesheets/fancybox.css' %>
 <!--[if IE]>
 <%= stylesheet_link_tag '/stylesheets/ie_all.css', :media => 'screen,projection' %>
 <![endif]-->
@@ -20,6 +21,8 @@
 <%= javascript_include_tag "jquery.1.4.js" %>
 <%= javascript_include_tag "jquery.easing.js" %>
 <%= javascript_include_tag "jquery.anythingslider.js" %>
+<%= javascript_include_tag "jquery.mousewheel-3.0.2.pack.js" %>
+<%= javascript_include_tag "jquery.fancybox-1.3.1.pack.js" %>
 <%= javascript_include_tag "application.js" %>
 <%= yield :head %>
 </head>

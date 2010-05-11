@@ -1,0 +1,19 @@
+<%- content_for :support do -%>
+	<%= render :partial => 'public/shared/news_support' %>
+<%- end -%>
+
+<%= content_tag('p', @page.intro, :id => 'intro') unless @page.intro %>
+
+<%= @page.body %>
+
+<% if @page.attachments %>
+<div id="gallery">
+	<% unless object.images.empty? %>
+		<ul class="images">
+		<% object.images.each do |image| %>
+			<li><%= link_to image_tag(image.file.url(:thumb)), image.file.url, :rel => 'gallery' %></li>
+		<% end %>
+		</ul>
+	<% end %>
+</div>
+<% end %>

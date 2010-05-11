@@ -1,0 +1,15 @@
+<%= content_tag('p', @page.intro, :id => 'intro') unless @page.intro %>
+
+<%= @page.body %>
+
+<div id="downloads">
+<% unless object.file_uploads.empty? %>
+<ul class="files">
+<% object.file_uploads.each do |file| %>
+	<li><%= link_to "#{image_tag(file.thumb_url('small'), :size => "25x25")}<span>#{file.title}</span>", file.permenant_url %></li>
+<% end %>
+</ul>
+<% end %>
+</div>
+
+<%= render_tag_list @page %>
