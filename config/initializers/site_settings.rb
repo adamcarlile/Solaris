@@ -1,6 +1,6 @@
-SITE_NAME = 'Your Sitename'
-ADMIN_EMAIL = 'someone@example.com'
-EMAIL_FROM = 'Your Sitename <someone@example.com>'
+SITE_NAME = 'Solaris Mobile'
+ADMIN_EMAIL = 'adam@benchmedia.co.uk'
+EMAIL_FROM = 'Solaris Mobile Website <website@solarismobile.com>'
 
 RECAPTCHA_PUBLIC_KEY = 'your-key-here'
 RECAPTCHA_PRIVATE_KEY = 'your-key-here'
