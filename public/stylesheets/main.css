@@ -161,7 +161,7 @@ div#body div.col h3
 div#body div.col
 {
 	background-color:#eaeaea;
-	min-height:412px;
+	height:412px;
 	position:relative;
 }
 
@@ -278,7 +278,8 @@ div#branding div#broadcast div.inner
 				position: relative;
         float: left;
         padding: 0;
-        margin: 0; }
+        margin: 0;
+ 				width:604px;}
 				
 				div#broadcast .inner ul li p {
 					position: absolute;
@@ -402,6 +403,7 @@ div#userpanel form#search_form input#q
 	padding:8px;
 	margin-top:2px;
 	margin-right:-3px;
+	height:12px;
 }
 
 p#user_nav
@@ -461,8 +463,6 @@ div#footer ul.newsitems li
 	overflow:hidden;
 	padding-bottom:10px;
 	padding-top:10px;
-	border-bottom:1px solid #4b4b4b;
-	border-top:1px solid #939393;
 }
 
 div#footer ul.newsitems li p
@@ -1026,12 +1026,13 @@ div#content ul#list
 
 div#content ul#list li
 {
+	margin:0px;
+	padding:0px;
 	overflow:hidden;
 	width:294px;
 	float:left;
 	margin-right:20px;
 	background-image:none;
-	padding:0px;
 }
 
 div#content ul#list li img
@@ -1369,12 +1370,12 @@ div#content div#gallery ul li a:hover img
 div#footer div.buttons
 {
 	overflow:hidden;
-	margin-top:20px;
+	margin-top:35px;
+	text-align:center;
 }
 
 div#footer div.buttons a
 {
-	float:right;
 	margin:5px;
 	margin-right:0px;
 	margin-left:10px;

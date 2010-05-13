@@ -1,4 +1,5 @@
 <div class="flickr">
+	<h4>feed</h4>
 	<%- cache('flickr', :expires_in => 3.hours) do %>
 		<% begin %>
 		<% Flickr.new(FLICKR_ID).stream.each do |image| %>

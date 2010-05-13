@@ -12,37 +12,14 @@
 				<% end %>
 				</ul>
 			</div>
-			<div class="col-two">
-				<ul class="tabs">
-			    	<li><a href="#tab1"><img src="/images/flickr_small.png" /></a></li>
-				</ul>
-				<div class="tab_container">
-				    <div id="tab1" class="tab_content">
-							<%= render :partial => 'public/shared/footer/flickr' %>
-				    </div>
-				</div>
+			<div class="col">
 				<div class="buttons">
 					<a href="http://www.facebook.com/pages/Solaris-Mobile/111842218848028"><img src="/images/buttons/facebook.png" alt="facebook" /></a>
 					<a href="http://twitter.com/Solaris_Mobile"><img src="/images/buttons/twitter.png" alt="twitter" /></a>
 				</div>
-				<div class="address">
-					<div class="left">
-					<%= image_tag('/images/solaris-grey.png') %>
-					</div>
-					<div class="right">
-						<address>
-							Solaris Mobile Ltd<br /> 
-							Pembroke House<br />
-							30 Pembroke Street Upper<br />
-							Dublin 2<br />
-							Ireland
-						</address>
-						<p>
-							<strong>E:</strong> <a href="mailto:mail@solarismobile.com">mail@solarismobile.com</a><br />
-							<strong>T:</strong> +353 1237 4628
-						</p>
-					</div>
-				</div>
+			</div>
+			<div class="col last">
+				<%= render :partial => 'public/shared/footer/flickr' %>
 			</div>
 		</div>
 </body>

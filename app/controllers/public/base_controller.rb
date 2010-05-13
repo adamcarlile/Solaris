@@ -44,7 +44,7 @@ class Public::BaseController < CMSController
     end
     
     def footer_news
-      @footer_news = NewsIndex.first.latest_stories(2)
+      @footer_news = NewsIndex.first.latest_stories(1)
     end
   
     # Set page title and metadata
