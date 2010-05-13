@@ -36,3 +36,5 @@ vendor/plugins/cms-engine/vendor/plugins/acts_as_xapian/xapiandbs/development/te
 vendor/plugins/cms-engine/vendor/plugins/acts_as_xapian/xapiandbs/development/value.DB
 vendor/plugins/cms-engine/vendor/plugins/acts_as_xapian/xapiandbs/development/value.baseA
 vendor/plugins/cms-engine/vendor/plugins/acts_as_xapian/xapiandbs/development/value.baseB
+app/views/.DS_Store
+public/images/.DS_Store

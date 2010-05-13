@@ -1,6 +1,14 @@
-<% content_for :sidebar do %>
-  <h2><%= @root_page %></h2>
-  <%= render_list_nav @root_page %>
+<% content_for :support do %>
+  <div class="panel grey" id="address">
+		<address>
+			Pembroke House<br />
+			30 Pembroke Street Upper<br />
+			Dublin 2<br />
+			Ireland<br />
+		</address>
+		<p>+353 1237 4628</p>
+		<p><strong>email:</strong> <a href="mailto:mail@solarismobile.com">mail@solarismobile.com</a></p>
+	</div>
 <% end %>
 
   <%= render 'public/shared/page_body' %>

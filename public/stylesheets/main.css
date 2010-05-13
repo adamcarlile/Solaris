@@ -1380,3 +1380,15 @@ div#footer div.buttons a
 	margin-right:0px;
 	margin-left:10px;
 }
+
+div#address.panel
+{
+	padding:15px;
+	font-size:12px;
+	line-height:1.6em;
+}
+
+div#address.panel address
+{
+	padding-bottom:10px;
+}
