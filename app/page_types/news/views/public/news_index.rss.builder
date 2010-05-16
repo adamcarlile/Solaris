@@ -5,11 +5,11 @@ xml.rss(:version=>"2.0"){
     xml.link(homepage_url)
     xml.description("What your site is all about.")
     xml.language('en-gb')
-      for story in @news
+      @news_items.each do |story|
         xml.item do
           xml.title(story.title)
-          xml.description(story.body)      
-          xml.author(story.user.name)               
+          xml.description(story.intro)      
+          xml.author(story.created_by.name)               
           xml.pubDate(story.created_at.strftime("%a, %d %b %Y %H:%M:%S %z"))
           xml.link(url_for_page(story))
           xml.guid(url_for_page(story))

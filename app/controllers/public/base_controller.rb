@@ -25,9 +25,11 @@ class Public::BaseController < CMSController
     
     def load_page
       if params[:slug_path].is_a? Array
-        @slug_path = params[:slug_path].join('/')
+        @slug_path, suffix = params[:slug_path].join('/').split('.') 
+        params[:format] = suffix ? suffix : ""
       else
-        @slug_path = params[:slug_path]
+        @slug_path, suffix = params[:slug_path].split('.')
+        params[:format] = suffix ? suffix : ""
       end
       @page, @extra_params = Page.find_by_slug_path_with_extra_path_params(@slug_path, admin_preview_mode?)
       
@@ -61,7 +63,7 @@ class Public::BaseController < CMSController
     # Load other pages required by templates
     def load_shared_pages
       @root_page = @page.root_ancestor
-      @news_rss = Page.find(:first, :conditions => ["type = 'NewsIndex'"])
+      @rss_feed = Page.find(:first, :conditions => ["type = 'NewsIndex'"])
     end
   
     # Set other instance variables required by the page type
@@ -81,8 +83,15 @@ class Public::BaseController < CMSController
       if @page.children_restricted? && !logged_in?
         render :action => 'restricted', :layout => @page.page_layout
       else
-        render :template => @page.public_template, :layout => @page.page_layout
-      end
+        respond_to do |wants|
+          wants.html do
+            render :template => @page.public_template, :layout => @page.page_layout
+          end
+          wants.rss do
+            render :template => @page.public_template, :layout => false
+          end
+        end
+      end          
     end
     
     

@@ -21,7 +21,6 @@
 <div class="divider news_item">
 	<div class="morebox">
 		<ul id="infolist">
-			<li class="user"><%= news_item.created_by.name %></li>
 			<li class="publish"><%= format_date news_item.publish_from %></li>
 		</ul>
 		<em><% if news_item.is_a? NewsItem %>News<% else %>Press Release<% end %></em>
