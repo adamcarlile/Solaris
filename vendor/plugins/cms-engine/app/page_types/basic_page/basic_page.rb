@@ -1,3 +1,0 @@
-class BasicPage < Page
-  
-end

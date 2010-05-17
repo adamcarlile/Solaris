@@ -1,8 +1,0 @@
-cms_user:
-  name: cms_user
-writer:
-  name: writer
-editor:
-  name: editor
-admin:
-  name: admin

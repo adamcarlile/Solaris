@@ -1,3 +1,0 @@
-<% if !@page.top_level? and @page.parent %>
-  <p><%= link_to "&laquo; Back to #{@page.parent}", url_for_page(@page.parent) %></p>
-<% end %>
