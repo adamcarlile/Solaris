@@ -733,6 +733,32 @@ div#support div.panel
 	margin-bottom:20px;
 }
 
+div#support div.panel div.inner
+{
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:5px;
+	padding-top:5px;
+}
+
+div#support div#rss_feed a
+{
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	background-image:url(../images/icons/feed.png);
+	background-repeat:no-repeat;
+	background-position:right center;
+	display:block;
+}
+
+div#support div#rss_feed a span
+{
+	display:block;
+	font-size:10px;
+	font-weight:normal;
+}
+
 div#support div#subnav 
 {
 }
@@ -1391,4 +1417,14 @@ div#address.panel
 div#address.panel address
 {
 	padding-bottom:10px;
+}
+
+div#footer a.feed
+{
+	font-size:11px;
+	background-image:url(../images/icons/bullet_feed.png);
+	background-position:left center;
+	background-repeat:no-repeat;
+	padding-left:20px;
+	margin-left:55px;
 }
