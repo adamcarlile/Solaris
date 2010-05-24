@@ -1,6 +1,3 @@
 [submodule "vendor/plugins/cms-engine"]
 	path = vendor/plugins/cms-engine
 	url = git@github.com:bluestorm/cms-engine.git
-[submodule "vendor/plugins/plugin-sitetv"]
-	path = vendor/plugins/plugin-sitetv
-	url = git@github.com:bluestorm/plugin-sitetv.git
