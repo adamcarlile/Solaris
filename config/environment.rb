@@ -20,6 +20,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   eval(File.read("#{RAILS_ROOT}/vendor/plugins/cms-engine/config/environment.rb"))
+  eval(File.read("#{RAILS_ROOT}/vendor/plugins/plugin-sitetv/config/environment.rb"))
   
   config.gem "flickraw"
   config.gem "httparty"
@@ -48,3 +49,4 @@ FlickRawOptions = {
   "api_key" => FLICKR_API_KEY,
   "shared_secret" => FLICKR_SECRET
 }
+

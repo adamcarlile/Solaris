@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100509213725) do
+ActiveRecord::Schema.define(:version => 20100523145226) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -298,6 +298,17 @@ ActiveRecord::Schema.define(:version => 20100509213725) do
     t.string   "company"
     t.string   "telephone"
     t.string   "state"
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "source_content_type"
+    t.string   "source_file_name"
+    t.integer  "source_file_size"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "intro"
   end
 
 end

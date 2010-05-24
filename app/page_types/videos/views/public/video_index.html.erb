@@ -1,0 +1,34 @@
+<% content_for :head do %>
+<%= javascript_include_tag '/sitetv/flowplayer/flowplayer-3.2.0.min.js' %>
+<%= javascript_include_tag '/sitetv/flowplayer/flowplayer.playlist.js' %>
+<%= stylesheet_link_tag '/sitetv/stylesheets/basic.css' %>
+<% end %>
+
+<%= render :partial => 'public/videos/player' %>
+
+<%= render :partial => 'public/videos/more_vids' %>
+
+<% content_for :support do %>
+	<%= render :partial => 'public/videos/playlist' %>
+<% end %>
+
+<script>
+flowplayer("player", "/sitetv/flowplayer/flowplayer-3.2.1.swf", {		// supply the configuration
+
+    clip : {
+        autoPlay: false,
+				scaling: 'stretch'
+    },
+
+		canvas:  {
+			// configure background properties
+			background: '#000000 url(<%= @first_video.source.url(:static) %>)',
+			backgroundGradient: 'none',
+		},
+
+    playlist: [			// playlist is an array of Clips, hence [...]
+        '<%= @first_video.source.url(:transcoded) %>',			
+    ]
+})
+</script>
+
