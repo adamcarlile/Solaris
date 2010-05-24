@@ -39,3 +39,4 @@ vendor/plugins/cms-engine/vendor/plugins/acts_as_xapian/xapiandbs/development/va
 app/views/.DS_Store
 public/images/.DS_Store
 .DS_Store
+ffmpeg2pass-0.log
