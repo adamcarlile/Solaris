@@ -41,3 +41,4 @@ public/images/.DS_Store
 .DS_Store
 ffmpeg2pass-0.log
 public/sitetv
+tmp/restart.txt
