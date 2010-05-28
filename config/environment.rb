@@ -45,8 +45,6 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-Paperclip.options[:log_command] = true
-
 FlickRawOptions = {
   "api_key" => FLICKR_API_KEY,
   "shared_secret" => FLICKR_SECRET
