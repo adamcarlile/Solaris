@@ -28,4 +28,4 @@ config.action_view.cache_template_loading            = true
 # config.threadsafe!
 
 #Set mod_rails apache binary target
-Paperclip.options[:command_path] = '/usr/local/bin/'
+#Paperclip.options[:command_path] = '/usr/local/bin/'
