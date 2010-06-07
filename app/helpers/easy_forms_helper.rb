@@ -2,7 +2,7 @@ module EasyFormsHelper
 
   def field(model, method, options = {})
     default_options = { :helper => :text_field, :helper_args => [], :label => "#{method.to_s.humanize}:", :helper_options =>  {} }
-    if method.to_s == 'password'
+    if method.to_s == 'password' || method.to_s == 'password_confirmation'
       default_options[:helper] = :password_field
     end
     options = default_options.update(options)

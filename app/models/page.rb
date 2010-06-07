@@ -14,7 +14,7 @@ class Page < ActiveRecord::Base
   named_scope :with_type, lambda { |q| { :conditions => {'type' => q.to_s.camelize} } }
 #  named_scope_with_exact_match :with_parent, :parent_id
   named_scope :limit, lambda {|n| {:limit => n} }
-  named_scope :in_date_range, lambda{|range| { :conditions => ["DATE(created_at) BETWEEN ? AND ?", range.begin.to_date, range.end.to_date] } }
+  named_scope :in_date_range, lambda{|range| { :conditions => ["DATE(publish_from) BETWEEN ? AND ?", range.begin.to_date, range.end.to_date] } }
   
   has_many :attachments, :class_name => "::Attachment", :dependent => :delete_all
   

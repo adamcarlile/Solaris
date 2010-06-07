@@ -35,7 +35,7 @@ class NewsIndex < Page
   end
 
   def self.archive_months
-    months = NewsItem.connection.select_all( %(SELECT DISTINCT DATE_FORMAT(created_at, '%m') AS month, DATE_FORMAT(created_at, '%Y') AS year FROM pages WHERE type = 'NewsItem' AND (#{CmsEngine::Acts::Publishable::PUBLISHED_CONDITIONS}) ORDER BY created_at DESC LIMIT 10) )
+    months = NewsItem.connection.select_all( %(SELECT DISTINCT DATE_FORMAT(publish_from, '%m') AS month, DATE_FORMAT(publish_from, '%Y') AS year FROM pages WHERE (type = 'NewsItem' or type ='EventItem' or type = 'PressRelease') AND (#{CmsEngine::Acts::Publishable::PUBLISHED_CONDITIONS}) ORDER BY publish_from DESC LIMIT 10) )
     months.map{|m| {:year => m["year"].to_i, :month => m["month"].to_i }}
   end
   

@@ -22,6 +22,9 @@
 			<div class="col last">
 				<%= render :partial => 'public/shared/footer/flickr' %>
 			</div>
+			<div class="bottom">
+				<%= render_list_nav(Page.find_by_title('Footer nav')) %>
+			</div>
 		</div>
 </body>
 </html>
