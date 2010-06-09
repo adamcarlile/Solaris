@@ -36,16 +36,33 @@
 <% end %>
 
 <% if @page.attachments %>
-<div id="attachments">
-	<h3>Download press release</h3>
-	<% unless object.file_uploads.empty? %>
-		<ul class="files">
-		<% object.file_uploads.each do |file| %>
-			<li class="<%= file.tags.first %>"><%= link_to file.tags.first.to_s.capitalize, file.permenant_url %></li>
+	<% if logged_in? %>
+	<div id="attachments">
+		<h3>Download press release</h3>
+		<% unless object.file_uploads.empty? %>
+			<ul class="files">
+			<% object.file_uploads.each do |file| %>
+				<li class="<%= file.tags.first %>"><%= link_to file.tags.first.to_s.capitalize, file.permenant_url %></li>
+			<% end %>
+			</ul>
 		<% end %>
-		</ul>
+	</div>
+	<% else %>
+		<h3>Log in to download press releases</h3>
+		<% @user_session = UserSession.new %>
+		<% form_for @user_session  do |f| %>
+		<%= hidden_field_tag :return_to, params[:return_to] %>
+		<fieldset id="login">
+			<%= f.field :email, :label => 'E-mail address', :prompt => "Please enter your E-mail Address" %>
+			<%= f.field :password, :label => 'Password', :prompt => "Don't forget to your password" %>
+			
+			<div class="formElm">
+				<input type="submit" id="submitbutton" class="button" value="Login" />
+			</div>
+		  
+		</fieldset>
+		<% end %>
 	<% end %>
-</div>
 <% end %>
 
 <p id="back"><%= link_to " &laquo; Back to news index", url_for_page(@page.parent) %></p>
