@@ -26,8 +26,6 @@
 <%= link_to(image_tag(@page.images.first.file.url(:large)), @page.images.first.file.url, :class => "lightbox") unless @page.images.empty? %>
 <%= @page.body %>
 
-<%= render 'public/comments/comments_ui' %>
-
 <% unless @page.press_info.empty? %>
 <div id="notes">
 	<h3>Notes to Editors</h3>
@@ -64,5 +62,7 @@
 		<% end %>
 	<% end %>
 <% end %>
+
+<%= render 'public/comments/comments_ui' %>
 
 <p id="back"><%= link_to " &laquo; Back to news index", url_for_page(@page.parent) %></p>
