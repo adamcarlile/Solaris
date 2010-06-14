@@ -1,0 +1,23 @@
+<% form_for current_object.comments.build, :url => comments_path do |f| %>
+	<h3>Add Your Comment</h3>
+  <%= f.hidden_field :commentable_id %>
+  <%= f.hidden_field :commentable_type %>
+  <fieldset>
+		<%= f.field :name, :label => 'Your name' %>
+		<%= f.field :email, :label => 'E-mail' %>
+		<fieldset class="textarea">
+    <%= f.field :comment, 
+      :helper => :text_area, 
+      :helper_options => {:rows => 6},
+      :label => 'Comment'
+    %>
+		</fieldset>
+    
+		<%= recaptcha_tags %>
+		
+		<div class="FormElm">
+    	<input type="submit" id="submitbutton" value="Comment" class="button" />
+		</div>
+		
+  </fieldset>
+<% end %>

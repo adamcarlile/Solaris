@@ -144,6 +144,11 @@ module CmsEngineHelper
     output += %(</div>)
   end
   
+  def format_time(time)
+    return '' if time.nil?
+    time.to_time.strftime("%H:%M")
+  end
+  
   def flickr_image_url(object, options = {})
     options = {:size => "original"}.update(options)
     suffix = case options[:size]

@@ -1,5 +1,11 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+
+var RecaptchaOptions = {
+   theme : 'white'
+};
+
+
 $(document).ready(function(){
 	$('div#broadcast').anythingSlider({
 		easing: "swing",                // Anything other than "linear" or "swing" requires the easing plugin

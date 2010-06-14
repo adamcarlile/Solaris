@@ -1,0 +1,11 @@
+<div class="comment">
+	<div class="content">
+		<ul class="commentbar">
+			<li class="author"><%= h comment.name %></li>
+			<li class="date"><%= format_date comment.created_at %> <em>@</em> <%= format_time comment.created_at %></li> 
+		</ul>
+  <%= image_tag(comment.gravatar_url)%>
+  <%= simple_format h(comment.comment) %>
+  <%= admin_tools 'comment', :comment => comment %>
+	</div>
+</div>
