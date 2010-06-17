@@ -28,11 +28,11 @@ flowplayer("player", "/sitetv/flowplayer/flowplayer-3.2.1.swf", {		// supply the
 		canvas:  {
 			// configure background properties
 			background: '#000000 url(<%= @first_video.source.url(:static) %>)',
-			backgroundGradient: 'none',
+			backgroundGradient: 'none'
 		},
 
     playlist: [			// playlist is an array of Clips, hence [...]
-        '<%= @first_video.source.url(:transcoded) %>',			
+        '<%= @first_video.source.url(:transcoded) %>'
     ]
 })
 </script>
