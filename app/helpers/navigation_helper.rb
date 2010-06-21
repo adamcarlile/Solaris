@@ -14,7 +14,11 @@ module NavigationHelper
   end
   
   def link_to_page(page, prefix = '')
-    content = page.nav_title + content_tag('span', page.subtitle)
+    subtitle = ''
+    unless page.subtitle.nil? || page.subtitle.empty?
+      subtitle = content_tag('span', page.subtitle)
+    end 
+    content = h(page.nav_title) + subtitle
     link_to(prefix + content, url_for_page(page))
   end
   
