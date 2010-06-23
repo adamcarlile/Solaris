@@ -1,3 +1,14 @@
+<% content_for :head do %>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('ul.files li a').click(function(){
+		var url = $(this).attr('rel')
+		$.get(url)
+	})
+})
+</script>
+<% end %>
+
 <%= content_tag('p', @page.intro, :id => 'intro') unless @page.intro %>
 
 <%= @page.body %>
@@ -6,7 +17,7 @@
 <% unless object.file_uploads.empty? %>
 <ul class="files">
 <% object.file_uploads.each do |file| %>
-	<li><%= link_to "#{image_tag(file.thumb_url('small'), :size => "25x25")}<span>#{file.title}</span>", file.permenant_url %></li>
+	<li><%= link_to "#{image_tag(file.thumb_url('small'), :size => "25x25")}<span>#{file.title}</span>", file.permenant_url , :rel => event_path('file_upload', 'download', file.id, :format => 'js')%></li>
 <% end %>
 </ul>
 <% end %>

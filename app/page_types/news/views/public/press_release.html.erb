@@ -2,6 +2,17 @@
 	<%= render :partial => 'public/shared/news_support' %>
 <%- end -%>
 
+<% content_for :head do %>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('ul.files li a').click(function(){
+		var url = $(this).attr('rel')
+		$.get(url)
+	})
+})
+</script>
+<% end %>
+
 <% content_for :branding do %>
 <div class="inner">
 	<div class="banner">
@@ -40,7 +51,7 @@
 		<% unless object.file_uploads.empty? %>
 			<ul class="files">
 			<% object.file_uploads.each do |file| %>
-				<li class="<%= file.tags.first %>"><%= link_to file.tags.first.to_s.capitalize, file.permenant_url %></li>
+				<li class="<%= file.tags.first %>"><%= link_to file.tags.first.to_s.capitalize, file.permenant_url, :rel => event_path('file_upload', 'download_press_release', file.id, :format => 'js') %></li>
 			<% end %>
 			</ul>
 		<% end %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100523145226) do
+ActiveRecord::Schema.define(:version => 20100623202921) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(:version => 20100523145226) do
     t.string   "gender"
     t.integer  "age"
     t.string   "referal"
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "event_type"
+    t.integer  "eventable_id"
+    t.string   "eventable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "file_upload_versions", :force => true do |t|
@@ -309,6 +318,7 @@ ActiveRecord::Schema.define(:version => 20100523145226) do
     t.datetime "updated_at"
     t.string   "name"
     t.text     "intro"
+    t.integer  "position"
   end
 
 end

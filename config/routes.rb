@@ -5,5 +5,8 @@ ActionController::Routing::Routes.draw do |map|
       page.resources :panels, :collection => {:reorder => :post}
     end
   end
+  
+  map.event '/event/:class_type/:event_type/:eventable_id', :controller => 'public/events', :action => 'create'
+  map.event '/event/:class_type/:event_type/:eventable_id.:format', :controller => 'public/events', :action => 'create'
 
 end
