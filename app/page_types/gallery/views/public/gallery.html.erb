@@ -10,8 +10,10 @@
 <div id="gallery">
 	<% unless object.images.empty? %>
 		<ul class="images">
-		<% object.images.each do |image| %>
+		<% object.images.each_with_index do |image, i| %>
+			<% if i != 0 %>
 			<li><%= link_to image_tag(image.file.url(:thumb)), image.file.url, :rel => 'gallery' %></li>
+			<% end %>
 		<% end %>
 		</ul>
 	<% end %>

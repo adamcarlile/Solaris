@@ -1,0 +1,12 @@
+<h2><%= @user.name %></h2>
+
+<table class="index">
+  <tr>
+    <th>Filename</th>
+    <th>Date</th>
+  </tr>
+<% @events.each do |event| %>
+	<tr>
+		<td><%= event.eventable.title %></td>
+		<td><%= event.created_at %></td>
+<% end %>

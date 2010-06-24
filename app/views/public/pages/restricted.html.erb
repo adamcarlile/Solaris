@@ -1,7 +1,7 @@
 <h1><%= h @page.title %></h1>
+<%= @page.body %>
 <h2>Restricted content</h2>
 <p>You must be logged in to view this page</p>
-
 <% @user_session = UserSession.new %>
 <% form_for @user_session, :html => {:id => 'login_form'} do |f| %>
 <%= hidden_field_tag :return_to, request.request_uri %>

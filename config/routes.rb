@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :pages do |page|
       page.resources :panels, :collection => {:reorder => :post}
     end
+    
+    admin.resources :users, :member => {:fire_event => :put, :download_log => :get}
   end
   
   map.event '/event/:class_type/:event_type/:eventable_id', :controller => 'public/events', :action => 'create'
