@@ -2,13 +2,15 @@
 		<div class="wrapper">
 			<div class="col">
 				<ul class="newsitems">
-				<% @footer_news.each do |news| %>
-					<li class="<%= cycle('odd','even')%>">
-						<%= datebox(news.publish_from)%>
-						<%= content_tag('h4', link_to(news.title, url_for_page(news)))%>
-						<%= content_tag('p', truncate(news.intro, :length => 200))%>
-						<%= link_to('Read more', url_for_page(news), :class => 'more')%>
-					</li>
+				<% unless @footer_news.empty? %>
+					<% @footer_news.each do |news| %>
+						<li class="<%= cycle('odd','even')%>">
+							<%= datebox(news.publish_from)%>
+							<%= content_tag('h4', link_to(news.title, url_for_page(news)))%>
+							<%= content_tag('p', truncate(news.intro, :length => 200))%>
+							<%= link_to('Read more', url_for_page(news), :class => 'more')%>
+						</li>
+					<% end %>
 				<% end %>
 				</ul>
 				<%= link_to('Subscribe to our <acronym title="Really Simple Syndication">RSS</acronym> feed', url_for_page(@rss_feed, :format => 'rss'), :class => 'feed')%>
