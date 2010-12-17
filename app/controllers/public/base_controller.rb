@@ -85,30 +85,23 @@ class Public::BaseController < CMSController
   
     # Render the appropriate template for the page type
     def render_page_template
-      if @page.children_restricted? && !logged_in?
-        respond_to do |wants|
-          wants.html do
-            render :action => 'restricted', :layout => @page.page_layout
-          end
-          wants.rss do
-            render :action => 'restricted', :layout => @page.page_layout
-          end
-        end
-      else
-        render_page_template_with_layout_and_extension
-      end          
-    end
-    
-    def render_page_template_with_layout_and_extension
-      respond_to do |wants|
-        wants.html do
-          render :template => @page.public_template, :layout => @page.page_layout
-        end
-        wants.rss do
-          render :template => @page.public_template, :layout => false
-        end
-      end
-    end
+       if @page.children_restricted? && !logged_in?
+         render :action => 'restricted', :layout => @page.page_layout
+       else
+         respond_to do |wants|
+           wants.html do
+             if request.xhr?
+               render :template => @page.public_template, :layout => false
+             else
+               render :template => @page.public_template, :layout => @page.page_layout
+             end
+           end
+           wants.rss do
+             render :template => @page.public_template, :layout => false
+           end
+         end
+       end          
+     end
     
     
     # Breadcrumb navigation
