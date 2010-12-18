@@ -18,6 +18,8 @@
     <th>Role</th>
     <th>Created</th>
     <th>Name</th>
+		<th>Company</th>
+		<th>Telephone</th>
     <th>State</th>
     <th>&nbsp;</th>
   </tr>
@@ -34,7 +36,9 @@
   </td>
   <td><%= format_date object.created_at %></td>
   <td><%= object.name %></td>
-  <td><%= object.state %></td>
+	<td><%= object.company %></td>
+	<td><%= object.telephone %></td>
+	<td><%= object.state %></td>
   <td class="actions" align="right">
 		<%= link_to 'downloads', download_log_admin_user_path(object) %>&nbsp;
     <%= link_to_with_icon 'edit', 'Edit', edit_object_url(object) %> &nbsp;

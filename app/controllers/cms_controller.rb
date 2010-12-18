@@ -10,7 +10,7 @@ class CMSController < ActionController::Base
 
   helper :cms_engine
   
-  before_filter :set_charset
+  before_filter :set_charset, :nulify_format
 
   #Check to make sure we are in production mode
   unless ActionController::Base.consider_all_requests_local
@@ -20,12 +20,10 @@ class CMSController < ActionController::Base
   end
   
   def render_not_found(exception)
-    nulify_format
     render :template => 'public/404', :status => :not_found
   end
   
   def render_internal_error(exception)
-    nulify_format
     render :template => 'public/500', :status => :internal_server_error
   end
 
@@ -33,13 +31,11 @@ class CMSController < ActionController::Base
     headers["Content-Type"] = "text/html; charset=UTF-8" 
   end
 
- 
+  def nulify_format
+    params[:format] = nil if params[:format] and params[:format].empty?
+  end
   
   protected
-    
-    def nulify_format
-      params[:format] = nil if params[:format] and params[:format].empty?
-    end
   
     def logged_in?
       !!current_user

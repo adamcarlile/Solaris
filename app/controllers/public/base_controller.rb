@@ -16,6 +16,7 @@ class Public::BaseController < CMSController
     #
     
     def render_page
+      nulify_format
       load_shared_pages
       set_page_types_ivars
       set_meta_data
